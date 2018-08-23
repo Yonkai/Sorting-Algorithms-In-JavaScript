@@ -28,11 +28,27 @@ function MasterSortingFunction(){
         array[index1]=array[index2];
         array[index2]= aux;
     }
+    //Selection Sort
+    this.selectionSort = function(){
+        var length = array.length;
+        var indexMin;
+
+        for(var i=0;i<length-1;i++){
+            indexMin = i;
+            for(var j=i; j<length; j++){
+                if(array[indexMin]>array[j]){
+                    indexMin = j;
+                }
+            }
+            if(i !== indexMin){
+                swap(array, i, indexMin);
+            }
+        }
+    };
 }
 
 //Set up in a prototype hierarchy hierarchy
 
-//Selection Sort
 
 //Insertion Sort
 
