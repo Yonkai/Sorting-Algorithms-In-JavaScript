@@ -45,9 +45,25 @@ function MasterSortingFunction(){
             }
         }
     };
+
+    this.insertionSort = function(){
+        var length=array.length;
+        var j;
+        var temp;
+
+        for(var i=1; i<length; i++){
+            j=i;
+            temp=array[i];
+
+            while (j>0 && array[j-1] > temp){
+                array[j] = array[j-1];
+                j--;
+            }
+            array[j] = temp;
+            }
+        }
 }
 
-//Set up in a prototype hierarchy hierarchy
 
 
 //Insertion Sort
@@ -57,6 +73,8 @@ function MasterSortingFunction(){
 //Merge Sort
 
 //Quick Sort
+
+//Set up in a prototype hierarchy hierarchy
 
 //Canvas Visualization, using sorting code to sort color circle
 //https://codepen.io/Yonkai/pen/gdOzYz?editors=0010
