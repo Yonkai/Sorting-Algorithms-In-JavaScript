@@ -45,7 +45,7 @@
         }
       }
     };
-
+    //Insertion Sort
     this.insertionSort = function () {
       var length = array.length;
       var j;
@@ -63,10 +63,6 @@
       }
     }
   }
-
-
-
-  //Insertion Sort
 
   //Bogo Sort
 
