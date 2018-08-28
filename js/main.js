@@ -67,6 +67,13 @@
   //Bogo Sort
 
   //Merge Sort
+  this.mergerSort = function(){
+    array = mergeSortRec(array);
+  };
+
+  var mergeSortRec = function(array){
+    //Finish recursive function
+  }
 
   //Quick Sort
 
