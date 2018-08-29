@@ -67,23 +67,23 @@
   //Bogo Sort
 
   //Merge Sort
-  this.mergerSort = function(){
+  this.mergerSort = function () {
     array = mergeSortRec(array);
   };
 
-  var mergeSortRec = function(array){
+  var mergeSortRec = function (array) {
     var length = array.length;
-    if(length == 1){
+    if (length == 1) {
       return array;
     }
-    var mid = Math.floor(length/2),
-    left = array.slice(0, mid),
-    right = array.slice(mid, length);
+    var mid = Math.floor(length / 2),
+      left = array.slice(0, mid),
+      right = array.slice(mid, length);
 
     return merge(mergeSortRec(left), mergeSortRec(right));
   };
 
-  var merge = function(left,right){
+  var merge = function (left, right) {
     //more recursion
   }
 
