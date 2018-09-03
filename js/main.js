@@ -92,5 +92,7 @@
   //Set up in a prototype hierarchy hierarchy
 
   //Canvas Visualization, using sorting code to sort color circle
-  //https://codepen.io/Yonkai/pen/gdOzYz?editors=0010
+  //Use the other color wheel instead it looks nicer.
+  //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
+  //Also display the big-o efficieny chart.
 })();
