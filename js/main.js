@@ -45,6 +45,7 @@
         }
       }
     };
+
     //Insertion Sort
     this.insertionSort = function () {
       var length = array.length;
@@ -64,8 +65,6 @@
     }
   }
 
-  //Bogo Sort
-
   //Merge Sort
   this.mergerSort = function () {
     array = mergeSortRec(array);
@@ -84,13 +83,12 @@
   };
 
   var merge = function (left, right) {
-    //more recursion
+    
   }
 
-  //Quick Sort
 
+  
   //Set up in a prototype hierarchy hierarchy
-
   //Canvas Visualization, using sorting code to sort color circle
   //Use the other color wheel instead it looks nicer.
   //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
