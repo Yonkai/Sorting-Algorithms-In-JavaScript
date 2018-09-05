@@ -65,8 +65,13 @@
     }
   }
 
-  //Merge Sort
-  this.mergerSort = function () {
+  /* 
+    The merge sort is a divide-and-conquer algorithm. The idea behind it is to divide 
+    original array into smaller arrays until each small array has only one position
+    and then merge these smaller arrays into bigger ones until we have a single big array
+    at the end that is sorted. 
+  */
+  this.mergeSort = function () {
     array = mergeSortRec(array);
   };
 
@@ -83,11 +88,30 @@
   };
 
   var merge = function (left, right) {
-    
-  }
+    var result = [];
+    var il = 0;
+    var ir = 0;
+      while(il < left.length && ir < right.length) {
+        if(left[il] < right[ir]){
+          result.push(left[il++]);
+        } else{
+          result.push(right[ir++]);
+        }
+      }
+
+      while(il < left.length){
+        result.push(left[il++])
+      }
+
+      while(ir < right.length){
+        result.push(right[ir++]);
+      }
+
+      return result;
+  };
 
 
-  
+
   //Set up in a prototype hierarchy hierarchy
   //Canvas Visualization, using sorting code to sort color circle
   //Use the other color wheel instead it looks nicer.
