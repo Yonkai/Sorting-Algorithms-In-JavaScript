@@ -1,6 +1,6 @@
 (function () {
   //This IIFE contains the four (4) sorting functions: Bubble Sort, Selection Sort, Insertion Sort, and Merge Sort.
-  //All are modified from another source.
+  //All are modified from another source. MasterSortingFunction is an ES% constructor. b
 
   function MasterSortingFunction() {
     let array = [];
