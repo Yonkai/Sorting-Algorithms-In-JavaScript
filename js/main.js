@@ -1,12 +1,16 @@
 (function () {
+  //This IIFE contains the four (4) sorting functions: Bubble Sort, Selection Sort, Insertion Sort, and Merge Sort.
+  //All are modified from another source.
 
   function MasterSortingFunction() {
     let array = [];
 
+    //Helper function
     this.insert = function (item) {
       array.push(item);
     };
 
+    //Helper function
     this.toString = function () {
       return array.join();
     };
@@ -22,12 +26,13 @@
         }
       }
     }
-
+    //Helper function for Bubble Sort and Selection Sort
     var swap = function (array, index1, index2) {
       var aux = array[index1];
       array[index1] = array[index2];
       array[index2] = aux;
     }
+
     //Selection Sort
     this.selectionSort = function () {
       var length = array.length;
@@ -63,7 +68,7 @@
         array[j] = temp;
       }
     }
-  }
+  
 
   /* 
     The merge sort is a divide-and-conquer algorithm. The idea behind it is to divide 
@@ -71,11 +76,13 @@
     and then merge these smaller arrays into bigger ones until we have a single big array
     at the end that is sorted. 
   */
+
+  //Merge Sort
   this.mergeSort = function () {
-    array = mergeSortRec(array);
+    array = mergeSortRecursion(array);
   };
 
-  var mergeSortRec = function (array) {
+  var mergeSortRecursion = function (array) {
     var length = array.length;
     if (length == 1) {
       return array;
@@ -84,7 +91,7 @@
       left = array.slice(0, mid),
       right = array.slice(mid, length);
 
-    return merge(mergeSortRec(left), mergeSortRec(right));
+    return merge(mergeSortRecursion(left), mergeSortRecursion(right));
   };
 
   var merge = function (left, right) {
@@ -110,7 +117,7 @@
       return result;
   };
 
-
+  }
 
   //Set up in a prototype hierarchy hierarchy
   //Canvas Visualization, using sorting code to sort color circle
