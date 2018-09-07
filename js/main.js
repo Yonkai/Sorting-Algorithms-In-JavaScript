@@ -119,6 +119,15 @@
 
   }
 
+  function generate360array(){
+    var g360a = [];
+    for (var i=0; i<360; i++) {
+      g360a[i]=i;
+    }
+     return g360a; 
+  }
+
+
     // Fisher-Yates (aka Knuth) Shuffle, for reordering color wheel postions.
   function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -139,11 +148,13 @@
     return array;
   }
   
+  var g360a = generate360array();
+  shuffle(g360a); 
 
   //Color wheel creation (provided under MIT licence):
   for (var i=0; i<360; i++) {
     var color = document.createElement("span");
-    color.setAttribute("id", "d" + i);
+    color.setAttribute("id", "d" + g360a[i]);
     color.style.backgroundColor = "hsl(" + i + ", 100%, 50%)"
     color.style.msTransform = "rotate(" + i + "deg)"
     color.style.webkitTransform = "rotate(" + i + "deg)"
