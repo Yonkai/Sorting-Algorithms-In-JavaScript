@@ -4,6 +4,8 @@
 
   function MasterSortingFunction() {
     let array = [];
+    //keeps track of changes by the various sorting algorithms
+    let changingStateList = [];
 
     //Helper function
     this.insert = function (item) {
@@ -124,7 +126,6 @@
   };
 
   }
-
   var sortingCall = new MasterSortingFunction();
 
   function generate360array(){
@@ -159,16 +160,14 @@
   var g360a = generate360array();
   shuffle(g360a);
   console.log(g360a);
-  
   sortingCall.insert(g360a);
   sortingCall.insertionSort();
-
   console.log(sortingCall.toSortedArray());
-  var sortedArray = sortingCall.toSortedArray();
+
   //sortedarray is sorted, g360a is what it sorts.
+  var sortedArray = sortingCall.toSortedArray();
 
-
-  //Color wheel creation (provided under MIT licence):
+  //Color wheel initial creation unsorted (provided under MIT licence):
   for (var i=0; i<360; i++) {
     var color = document.createElement("span");
     color.setAttribute("id", "d" + i);
@@ -181,10 +180,15 @@
     document.getElementById('colorwheel').appendChild(color);
   };
 
-  //Set up in a prototype hierarchy hierarchy
-  //Canvas Visualization, using sorting code to sort color circle
-  //Use the other color wheel instead it looks nicer.
-  //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
-  //Also display the big-o efficieny chart.
+  function displaySortingAnimation(){
+   //Make it so you delay this by 1/4 second setTimeout...
+    for (var i=0; i<360; i++) {
+     document.getElementById("d"+i).style.backgroundColor = 'red';
+  }
+};
+
 })();
 
+  //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
+  //Also display the big-o efficieny chart.
+  //Make this code less ugly/space it out like express/node code. or just react
