@@ -7,13 +7,18 @@
 
     //Helper function
     this.insert = function (item) {
-      array.push(item);
+      array = array.concat(item);
     };
 
     //Helper function
     this.toString = function () {
       return array.join();
     };
+
+    //return sorted array
+    this.toSortedArray = function(){
+      return array;
+    }
 
     //Bubble Sort
     this.bubbleSort = function () {
@@ -26,11 +31,12 @@
         }
       }
     }
+
     //Helper function for Bubble Sort and Selection Sort
     var swap = function (array, index1, index2) {
       var aux = array[index1];
-      array[index1] = array[index2];
-      array[index2] = aux;
+      array[index1] = array[index2]; //Change Point
+      array[index2] = aux; //Change Point
     }
 
     //Selection Sort
@@ -119,6 +125,8 @@
 
   }
 
+  var sortingCall = new MasterSortingFunction();
+
   function generate360array(){
     var g360a = [];
     for (var i=0; i<360; i++) {
@@ -149,13 +157,22 @@
   }
   
   var g360a = generate360array();
-  shuffle(g360a); 
+  shuffle(g360a);
+  console.log(g360a);
+  
+  sortingCall.insert(g360a);
+  sortingCall.insertionSort();
+
+  console.log(sortingCall.toSortedArray());
+  var sortedArray = sortingCall.toSortedArray();
+  //sortedarray is sorted, g360a is what it sorts.
+
 
   //Color wheel creation (provided under MIT licence):
   for (var i=0; i<360; i++) {
     var color = document.createElement("span");
-    color.setAttribute("id", "d" + g360a[i]);
-    color.style.backgroundColor = "hsl(" + i + ", 100%, 50%)"
+    color.setAttribute("id", "d" + i);
+    color.style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)"
     color.style.msTransform = "rotate(" + i + "deg)"
     color.style.webkitTransform = "rotate(" + i + "deg)"
     color.style.MozTransform = "rotate(" + i + "deg)"
