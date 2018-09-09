@@ -18,7 +18,7 @@
     };
 
     //return sorted array
-    this.toSortedArray = function(){
+    this.toSortedArray = function () {
       return array;
     }
 
@@ -76,87 +76,88 @@
         array[j] = temp;
       }
     }
-  
 
-  /* 
-    The merge sort is a divide-and-conquer algorithm. The idea behind it is to divide 
-    original array into smaller arrays until each small array has only one position
-    and then merge these smaller arrays into bigger ones until we have a single big array
-    at the end that is sorted. 
-  */
 
-  //Merge Sort
-  this.mergeSort = function () {
-    array = mergeSortRecursion(array);
-  };
+    /* 
+      The merge sort is a divide-and-conquer algorithm. The idea behind it is to divide 
+      original array into smaller arrays until each small array has only one position
+      and then merge these smaller arrays into bigger ones until we have a single big array
+      at the end that is sorted. 
+    */
 
-  var mergeSortRecursion = function (array) {
-    var length = array.length;
-    if (length == 1) {
-      return array;
-    }
-    var mid = Math.floor(length / 2),
-      left = array.slice(0, mid),
-      right = array.slice(mid, length);
+    //Merge Sort
+    this.mergeSort = function () {
+      array = mergeSortRecursion(array);
+    };
 
-    return merge(mergeSortRecursion(left), mergeSortRecursion(right));
-  };
+    var mergeSortRecursion = function (array) {
+      var length = array.length;
+      if (length == 1) {
+        return array;
+      }
+      var mid = Math.floor(length / 2),
+        left = array.slice(0, mid),
+        right = array.slice(mid, length);
 
-  var merge = function (left, right) {
-    var result = [];
-    var il = 0;
-    var ir = 0;
-      while(il < left.length && ir < right.length) {
-        if(left[il] < right[ir]){
+      return merge(mergeSortRecursion(left), mergeSortRecursion(right));
+    };
+
+    var merge = function (left, right) {
+      var result = [];
+      var il = 0;
+      var ir = 0;
+      while (il < left.length && ir < right.length) {
+        if (left[il] < right[ir]) {
           result.push(left[il++]);
-        } else{
+        } else {
           result.push(right[ir++]);
         }
       }
 
-      while(il < left.length){
+      while (il < left.length) {
         result.push(left[il++])
       }
 
-      while(ir < right.length){
+      while (ir < right.length) {
         result.push(right[ir++]);
       }
 
       return result;
-  };
+    };
 
   }
   var sortingCall = new MasterSortingFunction();
 
-  function generate360array(){
+  function generate360array() {
     var g360a = [];
-    for (var i=0; i<360; i++) {
-      g360a[i]=i;
+    for (var i = 0; i < 360; i++) {
+      g360a[i] = i;
     }
-     return g360a; 
+    return g360a;
   }
 
 
-    // Fisher-Yates (aka Knuth) Shuffle, for reordering color wheel postions.
+  // Fisher-Yates (aka Knuth) Shuffle, for reordering color wheel postions.
   function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-  
+    var currentIndex = array.length,
+      temporaryValue, randomIndex;
+
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-  
+
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-  
+
       // And swap it with the current element.
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-  
+
     return array;
   }
-  
+
   var g360a = generate360array();
   shuffle(g360a);
   console.log(g360a);
@@ -168,27 +169,31 @@
   var sortedArray = sortingCall.toSortedArray();
 
   //Color wheel initial creation unsorted (provided under MIT licence):
-  for (var i=0; i<360; i++) {
+  for (var i = 0; i < 360; i++) {
     var color = document.createElement("span");
     color.setAttribute("id", "d" + i);
-    color.style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)"
-    color.style.msTransform = "rotate(" + i + "deg)"
-    color.style.webkitTransform = "rotate(" + i + "deg)"
-    color.style.MozTransform = "rotate(" + i + "deg)"
-    color.style.OTransform = "rotate(" + i + "deg)"
-    color.style.transform = "rotate(" + i + "deg)"
+    color.style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)";
+    color.style.msTransform = "rotate(" + i + "deg)";
+    color.style.webkitTransform = "rotate(" + i + "deg)";
+    color.style.MozTransform = "rotate(" + i + "deg)";
+    color.style.OTransform = "rotate(" + i + "deg)";
+    color.style.transform = "rotate(" + i + "deg)";
     document.getElementById('colorwheel').appendChild(color);
   };
 
-  function displaySortingAnimation(){
-   //Make it so you delay this by 1/4 second setTimeout...
-    for (var i=0; i<360; i++) {
-     document.getElementById("d"+i).style.backgroundColor = 'red';
-  }
-};
+  var temporaryVariableDontUse = 0; //User best practice instead.
+  function displaySortingAnimation() {
+    //Make it so you delay this by 1/4 second setTimeout...
+    
+      document.getElementById("d" + temporaryVariableDontUse).style.backgroundColor = "hsl(" + sortedArray[temporaryVariableDontUse] + ", 100%, 50%)";
+      temporaryVariableDontUse++;
+      console.log(temporaryVariableDontUse);
+  };
+
+  var animation = setInterval(displaySortingAnimation,50);
 
 })();
 
-  //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
-  //Also display the big-o efficieny chart.
-  //Make this code less ugly/space it out like express/node code. or just react
+//Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
+//Also display the big-o efficieny chart.
+//Make this code less ugly/space it out like express/node code. or just react
