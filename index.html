@@ -22,6 +22,30 @@
   <![endif]-->
 
   <!-- Add your site or application content here -->
+
+  <!--Add options for controls for RESET,SPEED DELAY and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
+  -->
+  <select id="simple" name="algorithms">
+    <!--
+      If an <option> element is set with a value attribute, 
+      that attribute's value is sent when the form is submitted. If the value attribute is omitted, 
+      the content of the <option> element is used as the select box's value.
+      -->
+      <option>Insertion Sort</option>
+      <option>Bubble Sort</option>
+      <option>Merge Sort</option>
+      <option>Selection Sort</option>
+    </select>
+    <button type="reset">
+      RESET
+    </button>
+    <button type="button">
+      SORT
+    </button>
+    <label for="beans" id="speedDelayLabel">Delay:</label>
+    <input type="range" name="Speed Delay(ms)" id="speedDelay" min="10" max="5000" step="20">
+
+
   <div id="colorwheel"></div>
   <script src="js/vendor/modernizr-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

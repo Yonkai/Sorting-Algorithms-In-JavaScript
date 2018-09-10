@@ -162,7 +162,7 @@
   shuffle(g360a);
   console.log(g360a);
   sortingCall.insert(g360a);
-  sortingCall.insertionSort();
+  sortingCall.mergeSort(); //Doesn't show order/state at each array change as of now...
   console.log(sortingCall.toSortedArray());
 
   //sortedarray is sorted, g360a is what it sorts.
