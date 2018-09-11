@@ -31,32 +31,44 @@
       that attribute's value is sent when the form is submitted. If the value attribute is omitted, 
       the content of the <option> element is used as the select box's value.
       -->
-      <option>Insertion Sort</option>
-      <option>Bubble Sort</option>
-      <option>Merge Sort</option>
-      <option>Selection Sort</option>
-    </select>
-    <button type="reset">
-      RESET
-    </button>
-    <button type="button">
-      SORT
-    </button>
-    <label for="beans" id="speedDelayLabel">Delay:</label>
-    <input type="range" name="Speed Delay(ms)" id="speedDelay" min="10" max="5000" step="20">
+    <option>Insertion Sort</option>
+    <option>Bubble Sort</option>
+    <option>Merge Sort</option>
+    <option>Selection Sort</option>
+  </select>
+  <button type="reset">
+    RESET
+  </button>
+  <button type="button">
+    SORT
+  </button>
+  <label for="beans" id="speedDelayLabel">Delay:</label>
+  <input type="range" name="Speed Delay(ms)" id="speedDelay" min="10" max="5000" step="20">
+  <!-- TODO: Show big-o efficient when a different sorting algorithm is selected. -->
 
 
   <div id="colorwheel"></div>
   <script src="js/vendor/modernizr-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script>
+    window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')
+
+  </script>
   <script src="js/plugins.js"></script>
+  <script src="js/bigOModuleData.js"></script>
   <script src="js/main.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+    window.ga = function () {
+      ga.q.push(arguments)
+    };
+    ga.q = [];
+    ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto');
+    ga('send', 'pageview')
+
   </script>
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 </body>
