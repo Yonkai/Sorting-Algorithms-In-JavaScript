@@ -25,16 +25,16 @@
 
   <!--Add options for controls for RESET,SPEED DELAY and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
   -->
-  <select id="simple" name="algorithms">
+  <select id="algorithmsDropdown" name="algorithms">
     <!--
       If an <option> element is set with a value attribute, 
       that attribute's value is sent when the form is submitted. If the value attribute is omitted, 
       the content of the <option> element is used as the select box's value.
       -->
-    <option>Insertion Sort</option>
-    <option>Bubble Sort</option>
-    <option>Merge Sort</option>
-    <option>Selection Sort</option>
+    <option value="insertion sort">Insertion Sort</option>
+    <option value="bubble sort">Bubble Sort</option>
+    <option value="merge sort">Merge Sort</option>
+    <option value="selection sort">Selection Sort</option>
   </select>
   <button type="reset">
     RESET
@@ -42,7 +42,7 @@
   <button type="button">
     SORT
   </button>
-  <label for="beans" id="speedDelayLabel">Delay:</label>
+  <label for="speedDelay" id="speedDelayLabel">Delay:</label>
   <input type="range" name="Speed Delay(ms)" id="speedDelay" min="10" max="5000" step="20">
   <!-- TODO: Show big-o efficient when a different sorting algorithm is selected. -->
 

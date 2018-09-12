@@ -1,4 +1,4 @@
-var bigO = {
+var bigO = { //rescope
     algo:{
         bubble:'1',
         selection:'2',

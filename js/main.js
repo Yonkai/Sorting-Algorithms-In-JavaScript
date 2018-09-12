@@ -3,6 +3,8 @@
   //All are modified from another source. MasterSortingFunction is an ES% constructor. b
   console.log(bigO);
 
+ 
+
   function MasterSortingFunction() {
     let array = [];
     //keeps track of changes by the various sorting algorithms
@@ -192,6 +194,21 @@
   };
 
   var animation = setInterval(displaySortingAnimation,50);
+
+
+//Getting form data, needs to be reformatted for onchange event
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('select[name="algorithms"]').onchange = changeEventHandler;
+}, false);
+
+function changeEventHandler(event) {
+  var algoDropdown = document.getElementById("algorithmsDropdown");
+  var strUser = algoDropdown.options[algoDropdown.selectedIndex].value;
+  var strUser2 = algoDropdown.options[algoDropdown.selectedIndex].text;
+  console.log(strUser, strUser2);
+  alert(strUser);
+}
+//End getting form data, needs to be reformatted
 
 })();
 
