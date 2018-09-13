@@ -201,12 +201,24 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('select[name="algorithms"]').onchange = changeEventHandler;
 }, false);
 
+document.getElementById("resetButton").addEventListener("click", resetPage);
+document.getElementById("sortButton").addEventListener("click", beginNewSort);
+
+
+function resetPage() {
+  window.location.reload(false); //If the bool is true it will reload from the server, otherwise from the cache.
+}
+
+function beginNewSort(){
+  console.log("TODO");
+}
+
 function changeEventHandler(event) {
+  console.log(event);
   var algoDropdown = document.getElementById("algorithmsDropdown");
   var strUser = algoDropdown.options[algoDropdown.selectedIndex].value;
   var strUser2 = algoDropdown.options[algoDropdown.selectedIndex].text;
   console.log(strUser, strUser2);
-  alert(strUser);
 }
 //End getting form data, needs to be reformatted
 
@@ -215,3 +227,5 @@ function changeEventHandler(event) {
 //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
 //Also display the big-o efficieny chart.
 //Make this code less ugly/space it out like express/node code. or just react
+
+//Refactor this code after everything is done with better comments and structures.
