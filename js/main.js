@@ -3,8 +3,6 @@
   //All are modified from another source. MasterSortingFunction is an ES% constructor. b
   console.log(bigO);
 
- 
-
   function MasterSortingFunction() {
     let array = [];
     //keeps track of changes by the various sorting algorithms
@@ -171,7 +169,7 @@
   //sortedarray is sorted, g360a is what it sorts.
   var sortedArray = sortingCall.toSortedArray();
 
-  //Color wheel initial creation unsorted (provided under MIT licence):
+  //Color wheel initial creation unsorted (provided under MIT licence)Source:_:
   for (var i = 0; i < 360; i++) {
     var color = document.createElement("span");
     color.setAttribute("id", "d" + i);
@@ -185,17 +183,14 @@
   };
 
   var temporaryVariableDontUse = 0; //User best practice instead.
-  function displaySortingAnimation() {
+ displaySortingAnimation = function() {
     //Make it so you delay this by 1/4 second setTimeout...
-    
       document.getElementById("d" + temporaryVariableDontUse).style.backgroundColor = "hsl(" + sortedArray[temporaryVariableDontUse] + ", 100%, 50%)";
       temporaryVariableDontUse++;
-      console.log(temporaryVariableDontUse);
+      //console.log(temporaryVariableDontUse);
   };
-
-  var animation = setInterval(displaySortingAnimation,50);
-
-
+var initSpeedValueOfAnimation = 500;
+var animation = setInterval(displaySortingAnimation,initSpeedValueOfAnimation);
 //Getting form data, needs to be reformatted for onchange event
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('select[name="algorithms"]').onchange = changeEventHandler;
@@ -220,12 +215,20 @@ function changeEventHandler(event) {
   var strUser2 = algoDropdown.options[algoDropdown.selectedIndex].text;
   console.log(strUser, strUser2);
 }
-//End getting form data, needs to be reformatted
 
+var speedDelayElement = document.getElementById('speedDelay');
+speedDelayElement.onchange=function(){
+  var r = document.getElementById('speedDelay').value;
+  console.log(r);
+  clearInterval(animation);
+  animation = setInterval(displaySortingAnimation,r);
+  };
+//End getting form data, needs to be reformatted
 })();
 
 //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
 //Also display the big-o efficieny chart.
 //Make this code less ugly/space it out like express/node code. or just react
 
-//Refactor this code after everything is done with better comments and structures.
+//Refactor this code after everything is done with better comments and structures(OOP JS GUIDE).
+//Move variables to top, initialize at bottom, functions in the middle, out of global scope, check for leaks
