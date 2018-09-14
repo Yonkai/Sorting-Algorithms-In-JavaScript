@@ -171,9 +171,9 @@
 
   //Color wheel initial creation unsorted (provided under MIT licence)Source:_:
   for (var i = 0; i < 360; i++) {
-    var color = document.createElement("span");
+    var color = document.createElement("span"); //rescope for the for use in reset function
     color.setAttribute("id", "d" + i);
-    color.style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)";
+    color.style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)"; //only need to change this part for proper reset.
     color.style.msTransform = "rotate(" + i + "deg)";
     color.style.webkitTransform = "rotate(" + i + "deg)";
     color.style.MozTransform = "rotate(" + i + "deg)";
