@@ -183,47 +183,54 @@
   };
 
   var temporaryVariableDontUse = 0; //User best practice instead.
- displaySortingAnimation = function() {
+  displaySortingAnimation = function () {
     //Make it so you delay this by 1/4 second setTimeout...
-      document.getElementById("d" + temporaryVariableDontUse).style.backgroundColor = "hsl(" + sortedArray[temporaryVariableDontUse] + ", 100%, 50%)";
-      temporaryVariableDontUse++;
-      //console.log(temporaryVariableDontUse);
+    document.getElementById("d" + temporaryVariableDontUse).style.backgroundColor = "hsl(" + sortedArray[temporaryVariableDontUse] + ", 100%, 50%)";
+    temporaryVariableDontUse++;
+    //console.log(temporaryVariableDontUse);
   };
-var initSpeedValueOfAnimation = 500;
-var animation = setInterval(displaySortingAnimation,initSpeedValueOfAnimation);
-//Getting form data, needs to be reformatted for onchange event
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('select[name="algorithms"]').onchange = changeEventHandler;
-}, false);
 
-document.getElementById("resetButton").addEventListener("click", resetPage);
-document.getElementById("sortButton").addEventListener("click", beginNewSort);
+  var initSpeedValueOfAnimation = 500;
+  var animation = setInterval(displaySortingAnimation, initSpeedValueOfAnimation);
+  //Getting form data, needs to be reformatted for onchange event
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('select[name="algorithms"]').onchange = changeEventHandler;
+  }, false);
+
+  document.getElementById("resetButton").addEventListener("click", resetPage);
+  document.getElementById("sortButton").addEventListener("click", beginNewSort);
 
 
-function resetPage() {
-  window.location.reload(false); //If the bool is true it will reload from the server, otherwise from the cache.
-}
+  function resetPage() {
+    for (var i = 0; i < 360; i++) {
+      document.getElementById("d"+i).style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)"; 
+       
+    };
+    g360a = generate360array();
+    shuffle(g360a);
+    temporaryVariableDontUse = 0;
+  }
 
-function beginNewSort(){
-  console.log("TODO");
-}
+  function beginNewSort() {
+    console.log("TODO");
+  }
 
-function changeEventHandler(event) {
-  console.log(event);
-  var algoDropdown = document.getElementById("algorithmsDropdown");
-  var strUser = algoDropdown.options[algoDropdown.selectedIndex].value;
-  var strUser2 = algoDropdown.options[algoDropdown.selectedIndex].text;
-  console.log(strUser, strUser2);
-}
+  function changeEventHandler(event) {
+    console.log(event);
+    var algoDropdown = document.getElementById("algorithmsDropdown");
+    var strUser = algoDropdown.options[algoDropdown.selectedIndex].value;
+    var strUser2 = algoDropdown.options[algoDropdown.selectedIndex].text;
+    console.log(strUser, strUser2);
+  }
 
-var speedDelayElement = document.getElementById('speedDelay');
-speedDelayElement.onchange=function(){
-  var r = document.getElementById('speedDelay').value;
-  console.log(r);
-  clearInterval(animation);
-  animation = setInterval(displaySortingAnimation,r);
+  var speedDelayElement = document.getElementById('speedDelay');
+  speedDelayElement.onchange = function () {
+    var r = document.getElementById('speedDelay').value;
+    console.log(r);
+    clearInterval(animation);
+    animation = setInterval(displaySortingAnimation, r);
   };
-//End getting form data, needs to be reformatted
+  //End getting form data, needs to be reformatted
 })();
 
 //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
