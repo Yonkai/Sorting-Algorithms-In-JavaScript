@@ -3,7 +3,7 @@
   //All are modified from another source. MasterSortingFunction is an ES% constructor. b
   console.log(bigO);
 
-  var multiplierForColorWheelSize = 1; //Breaks around 12ish?
+  var multiplierForColorWheelSize = 12; //Breaks around 12.
   var colorWheelSizeInitial = 360;
   var totalColorWheelSteps = multiplierForColorWheelSize*colorWheelSizeInitial; 
   
@@ -178,7 +178,7 @@
   for (var i = 0; i < totalColorWheelSteps; i++) {
     var color = document.createElement("span"); //rescope for the for use in reset function
     color.setAttribute("id", "d" + i);
-    color.style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)"; //only need to change this part for proper reset.
+    color.style.backgroundColor = "hsl(" + (g360a[i]) + ", 100%, 50%)"; //only need to change this part for proper reset.
     color.style.msTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
     color.style.webkitTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
     color.style.MozTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
