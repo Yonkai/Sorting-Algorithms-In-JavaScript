@@ -3,6 +3,11 @@
   //All are modified from another source. MasterSortingFunction is an ES% constructor. b
   console.log(bigO);
 
+  var multiplierForColorWheelSize = 1; //Breaks around 12ish?
+  var colorWheelSizeInitial = 360;
+  var totalColorWheelSteps = multiplierForColorWheelSize*colorWheelSizeInitial; 
+  
+
   function MasterSortingFunction() {
     let array = [];
     //keeps track of changes by the various sorting algorithms
@@ -131,7 +136,7 @@
 
   function generate360array() {
     var g360a = [];
-    for (var i = 0; i < 360; i++) {
+    for (var i = 0; i < totalColorWheelSteps; i++) {
       g360a[i] = i;
     }
     return g360a;
@@ -170,15 +175,15 @@
   var sortedArray = sortingCall.toSortedArray();
 
   //Color wheel initial creation unsorted (provided under MIT licence)Source:_:
-  for (var i = 0; i < 360; i++) {
+  for (var i = 0; i < totalColorWheelSteps; i++) {
     var color = document.createElement("span"); //rescope for the for use in reset function
     color.setAttribute("id", "d" + i);
     color.style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)"; //only need to change this part for proper reset.
-    color.style.msTransform = "rotate(" + i + "deg)";
-    color.style.webkitTransform = "rotate(" + i + "deg)";
-    color.style.MozTransform = "rotate(" + i + "deg)";
-    color.style.OTransform = "rotate(" + i + "deg)";
-    color.style.transform = "rotate(" + i + "deg)";
+    color.style.msTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
+    color.style.webkitTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
+    color.style.MozTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
+    color.style.OTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
+    color.style.transform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
     document.getElementById('colorwheel').appendChild(color);
   };
 
@@ -202,7 +207,7 @@
 
 
   function resetPage() {
-    for (var i = 0; i < 360; i++) {
+    for (var i = 0; i < totalColorWheelSteps; i++) {
       document.getElementById("d"+i).style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)"; 
        
     };
@@ -230,7 +235,7 @@
     clearInterval(animation);
     animation = setInterval(displaySortingAnimation, r);
   };
-  //End getting form data, needs to be reformatted
+  //End getting form data, needs to be reformatted  
 })();
 
 //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
