@@ -1,11 +1,11 @@
 (function () {
   //This IIFE contains the four (4) sorting functions: Bubble Sort, Selection Sort, Insertion Sort, and Merge Sort.
   //All are modified from another source. MasterSortingFunction is an ES% constructor. b
-  console.log(bigO);
-
-  var multiplierForColorWheelSize = 12; //Breaks around 12.
+  var multiplierForColorWheelSize = 1; //Breaks around 12.
   var colorWheelSizeInitial = 360;
   var totalColorWheelSteps = multiplierForColorWheelSize*colorWheelSizeInitial; 
+  var initSpeedValueOfAnimation = 500;
+  var temporaryVariableDontUse = 0; //User best practice instead.
   
 
   function MasterSortingFunction() {
@@ -187,15 +187,16 @@
     document.getElementById('colorwheel').appendChild(color);
   };
 
-  var temporaryVariableDontUse = 0; //User best practice instead.
+  
   displaySortingAnimation = function () {
     //Make it so you delay this by 1/4 second setTimeout...
     document.getElementById("d" + temporaryVariableDontUse).style.backgroundColor = "hsl(" + sortedArray[temporaryVariableDontUse] + ", 100%, 50%)";
     temporaryVariableDontUse++;
+    //Make it so this reads the state from the sorting function instead...
     //console.log(temporaryVariableDontUse);
   };
 
-  var initSpeedValueOfAnimation = 500;
+  
   var animation = setInterval(displaySortingAnimation, initSpeedValueOfAnimation);
   //Getting form data, needs to be reformatted for onchange event
   document.addEventListener('DOMContentLoaded', function () {
