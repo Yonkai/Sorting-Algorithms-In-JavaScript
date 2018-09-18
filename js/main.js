@@ -190,6 +190,16 @@
   
   displaySortingAnimation = function () {
     //Make it so you delay this by 1/4 second setTimeout...
+    //This will have to loop through a set of arrays that are different from the unsorted array, and compare the difference between
+    //the two so that set state change in the array from the sorting algorithms gets represented on the color wheel, the final color wheel comparison
+    //will of course be sorted, and this will happen behind the scenes. 
+    //
+    //loop through entire wheel
+    // update wheel based on first state of state list from algorithms
+    //   if the statelist[2][i] !== statelist[1][i]
+    //     set the background color of the wheel spike from previous the statelist[2]
+    // end condition is when the last state, the finished array, is looped through and changes the wheel.
+    //
     document.getElementById("d" + temporaryVariableDontUse).style.backgroundColor = "hsl(" + sortedArray[temporaryVariableDontUse] + ", 100%, 50%)";
     temporaryVariableDontUse++;
     //Make it so this reads the state from the sorting function instead...
