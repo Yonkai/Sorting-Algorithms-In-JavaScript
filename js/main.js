@@ -1,17 +1,18 @@
 (function () {
   //This IIFE contains the four (4) sorting functions: Bubble Sort, Selection Sort, Insertion Sort, and Merge Sort.
   //All are modified from another source. MasterSortingFunction is an ES% constructor. b
-  var multiplierForColorWheelSize = 3; //Breaks around 12.
+  var multiplierForColorWheelSize = 2; //Breaks around 12.
   var colorWheelSizeInitial = 360;
   var totalColorWheelSteps = multiplierForColorWheelSize*colorWheelSizeInitial; 
   var initSpeedValueOfAnimation = 500;
   var temporaryVariableDontUse = 0; //User best practice instead.
+  //keeps track of changes by the various sorting algorithms
   
 
   function MasterSortingFunction() {
     let array = [];
-    //keeps track of changes by the various sorting algorithms
     let changingStateList = [];
+    
 
     //Helper function
     this.insert = function (item) {
@@ -22,6 +23,10 @@
     this.toString = function () {
       return array.join();
     };
+
+    this.toStateList = function(){
+      return changingStateList;
+    }
 
     //return sorted array
     this.toSortedArray = function () {
@@ -44,7 +49,10 @@
     var swap = function (array, index1, index2) {
       var aux = array[index1];
       array[index1] = array[index2]; //Change Point
+      changingStateList.push(array.slice());
       array[index2] = aux; //Change Point
+      changingStateList.push(array.slice());
+
     }
 
     //Selection Sort
@@ -168,8 +176,9 @@
   shuffle(g360a);
   console.log(g360a);
   sortingCall.insert(g360a);
-  sortingCall.mergeSort(); //Doesn't show order/state at each array change as of now...
+  sortingCall.bubbleSort(); //Doesn't show order/state at each array change as of now...
   console.log(sortingCall.toSortedArray());
+  console.log(sortingCall.toStateList());
 
   //sortedarray is sorted, g360a is what it sorts.
   var sortedArray = sortingCall.toSortedArray();
