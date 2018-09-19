@@ -24,7 +24,7 @@
       return array.join();
     };
 
-    this.toStateList = function(){
+    this.showStateList = function(){
       return changingStateList;
     }
 
@@ -49,7 +49,12 @@
     var swap = function (array, index1, index2) {
       var aux = array[index1];
       array[index1] = array[index2]; //Change Point
+      //For storing the changes you could store objects like this: {change:X,changedIndexes:[[indexes],[correlating changed values]],}
+      //example::{change:0,changedIndexes:[[2,54,34],[4,3,2]]} this would start from the first shuffled array, change that array and store the newly changed first shuffled array
+      //and then do the same process to the newly changed array, at the same time deleting the unused array, this would make it so that you would only have one array stored at
+      //a time? Maybe.
       changingStateList.push(array.slice());
+     
       array[index2] = aux; //Change Point
       changingStateList.push(array.slice());
 
@@ -140,6 +145,7 @@
     };
 
   }
+
   var sortingCall = new MasterSortingFunction();
 
   function generate360array() {
@@ -178,7 +184,7 @@
   sortingCall.insert(g360a);
   sortingCall.bubbleSort(); //Doesn't show order/state at each array change as of now...
   console.log(sortingCall.toSortedArray());
-  console.log(sortingCall.toStateList());
+  console.log(sortingCall.showStateList());
 
   //sortedarray is sorted, g360a is what it sorts.
   var sortedArray = sortingCall.toSortedArray();
