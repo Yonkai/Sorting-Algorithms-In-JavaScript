@@ -3,16 +3,23 @@
   //All are modified from another source. MasterSortingFunction is an ES% constructor. b
   var multiplierForColorWheelSize = 2; //Breaks around 12.
   var colorWheelSizeInitial = 360;
-  var totalColorWheelSteps = multiplierForColorWheelSize*colorWheelSizeInitial; 
+  var totalColorWheelSteps = multiplierForColorWheelSize * colorWheelSizeInitial;
   var initSpeedValueOfAnimation = 500;
   var temporaryVariableDontUse = 0; //User best practice instead.
-  //keeps track of changes by the various sorting algorithms
-  
+  //keeps track of changes by the various sorting algorithms.
+
+  //There's definitely an GOF solution to this, thinking singelton to save memory.
+  var bubbleSortObjectToMakeVisualOutputLessPriceyTemplate = {
+    recordedChangePointOrder: null,
+    changedPostionsInTheArrayForBubbleSort: [null],
+    correspondingValuesForWhatTheyWereChangedToo: [null]
+  };
+
 
   function MasterSortingFunction() {
     let array = [];
     let changingStateList = [];
-    
+
 
     //Helper function
     this.insert = function (item) {
@@ -24,7 +31,7 @@
       return array.join();
     };
 
-    this.showStateList = function(){
+    this.showStateList = function () {
       return changingStateList;
     }
 
@@ -54,7 +61,7 @@
       //and then do the same process to the newly changed array, at the same time deleting the unused array, this would make it so that you would only have one array stored at
       //a time? Maybe.
       changingStateList.push(array.slice());
-     
+
       array[index2] = aux; //Change Point
       changingStateList.push(array.slice());
 
@@ -194,15 +201,15 @@
     var color = document.createElement("span"); //rescope for the for use in reset function
     color.setAttribute("id", "d" + i);
     color.style.backgroundColor = "hsl(" + (g360a[i]) + ", 100%, 50%)"; //only need to change this part for proper reset.
-    color.style.msTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
-    color.style.webkitTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
-    color.style.MozTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
-    color.style.OTransform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
-    color.style.transform = "rotate(" + i/multiplierForColorWheelSize + "deg)";
+    color.style.msTransform = "rotate(" + i / multiplierForColorWheelSize + "deg)";
+    color.style.webkitTransform = "rotate(" + i / multiplierForColorWheelSize + "deg)";
+    color.style.MozTransform = "rotate(" + i / multiplierForColorWheelSize + "deg)";
+    color.style.OTransform = "rotate(" + i / multiplierForColorWheelSize + "deg)";
+    color.style.transform = "rotate(" + i / multiplierForColorWheelSize + "deg)";
     document.getElementById('colorwheel').appendChild(color);
   };
 
-  
+
   displaySortingAnimation = function () {
     //Make it so you delay this by 1/4 second setTimeout...
     //This will have to loop through a set of arrays that are different from the unsorted array, and compare the difference between
@@ -221,7 +228,7 @@
     //console.log(temporaryVariableDontUse);
   };
 
-  
+
   var animation = setInterval(displaySortingAnimation, initSpeedValueOfAnimation);
   //Getting form data, needs to be reformatted for onchange event
   document.addEventListener('DOMContentLoaded', function () {
@@ -234,8 +241,8 @@
 
   function resetPage() {
     for (var i = 0; i < totalColorWheelSteps; i++) {
-      document.getElementById("d"+i).style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)"; 
-       
+      document.getElementById("d" + i).style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)";
+
     };
     g360a = generate360array();
     shuffle(g360a);
