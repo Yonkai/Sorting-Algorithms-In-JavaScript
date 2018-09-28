@@ -1,7 +1,7 @@
 (function () {
   //This IIFE contains the four (4) sorting functions: Bubble Sort, Selection Sort, Insertion Sort, and Merge Sort.
   //All are modified from another source. MasterSortingFunction is an ES% constructor. b
-  var multiplierForColorWheelSize = 2; //Breaks around 12.
+  var multiplierForColorWheelSize = 5; //Breaks around 12.
   var colorWheelSizeInitial = 360;
   var totalColorWheelSteps = multiplierForColorWheelSize * colorWheelSizeInitial;
   var initSpeedValueOfAnimation = 500;
@@ -38,10 +38,6 @@
       return changingStateList;
     }
 
-    this.recordStateList = function (){
-
-    }
-
     //return sorted array
     this.toSortedArray = function () {
       return array;
@@ -53,23 +49,31 @@
       for (var i = 0; i < length; i++) {
         for (var j = 0; j < length - 1 - i; j++) {
           if (array[j] > array[j + 1]) {
-            swap(array, j, j + 1);
+            swap(array, j, j + 1,'bubble');
           }
         }
       }
     }
 
     //Helper function for Bubble Sort and Selection Sort
-    var swap = function (array, index1, index2) {
+    var swap = function (array, index1, index2, sortfunc) {
       var aux = array[index1];
+      var aux2 = array[index2];
       array[index1] = array[index2]; //Change Point
-      changingStateList.set(incrementalKey++,'ct');
-      changingStateList
+      if(sortfunc === 'bubble'){
+       changingStateList.set(incrementalKey++,'count');//count
+       changingStateList.set(incrementalKey++,index1)//position
+       changingStateList.set(incrementalKey++,aux)//from this number
+       changingStateList.set(incrementalKey++,aux2)//to this number
+  
+      }
       array[index2] = aux; //Change Point
-
-      
-      
-
+      if(sortfunc === 'bubble'){
+        changingStateList.set(incrementalKey++,'count');//count
+        changingStateList.set(incrementalKey++,index2)//position
+        changingStateList.set(incrementalKey++,aux2)//from this number
+        changingStateList.set(incrementalKey++,aux)//to this number
+       }
     }
 
     //Selection Sort
