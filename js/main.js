@@ -1,7 +1,7 @@
 (function () {
   //This IIFE contains the four (4) sorting functions: Bubble Sort, Selection Sort, Insertion Sort, and Merge Sort.
   //All are modified from another source. MasterSortingFunction is an ES% constructor. b
-  var multiplierForColorWheelSize = 5; //Breaks around 12.
+  var multiplierForColorWheelSize = 1; //Breaks around 12.
   var colorWheelSizeInitial = 360;
   var totalColorWheelSteps = multiplierForColorWheelSize * colorWheelSizeInitial;
   var initSpeedValueOfAnimation = 500;
@@ -62,7 +62,7 @@
       array[index1] = array[index2]; //Change Point
       if(sortfunc === 'bubble'){
        changingStateList.set(incrementalKey++,'count');//count
-       changingStateList.set(incrementalKey++,index1)//position
+       changingStateList.set(incrementalKey++,index1)//position index
        changingStateList.set(incrementalKey++,aux)//from this number
        changingStateList.set(incrementalKey++,aux2)//to this number
   
