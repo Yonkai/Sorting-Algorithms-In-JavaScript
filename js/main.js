@@ -63,16 +63,16 @@
       if(sortfunc === 'bubble'){
        changingStateList.set(incrementalKey++,'count');//count
        changingStateList.set(incrementalKey++,index1)//position index
-       changingStateList.set(incrementalKey++,aux)//from this number
-       changingStateList.set(incrementalKey++,aux2)//to this number
+       changingStateList.set(incrementalKey++,aux)//from this number (actually apart of the bubble sort)
+       changingStateList.set(incrementalKey++,aux2)//to this number (actually apart of the bubble sort)
   
       }
       array[index2] = aux; //Change Point
       if(sortfunc === 'bubble'){
         changingStateList.set(incrementalKey++,'count');//count
         changingStateList.set(incrementalKey++,index2)//position
-        changingStateList.set(incrementalKey++,aux2)//from this number
-        changingStateList.set(incrementalKey++,aux)//to this number
+        changingStateList.set(incrementalKey++,aux2)//from this number (actually apart of the bubble sort)
+        changingStateList.set(incrementalKey++,aux)//to this number (actually part of the bubble sort)
        }
     }
 
@@ -273,7 +273,7 @@
   var speedDelayElement = document.getElementById('speedDelay');
   speedDelayElement.onchange = function () {
     var r = document.getElementById('speedDelay').value;
-    console.log(r);
+    console.log(r+"ms: New speed delay.");
     clearInterval(animation);
     animation = setInterval(displaySortingAnimation, r);
   };
