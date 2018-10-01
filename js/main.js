@@ -24,12 +24,10 @@
     let changingStateList = new Map();
     var incrementalKey = 0;
 
-    //Helper function
     this.insert = function (item) {
       array = array.concat(item);
     };
 
-    //Helper function
     this.toString = function () {
       return array.join();
     };
@@ -43,7 +41,6 @@
       return array;
     }
 
-    //Bubble Sort
     this.bubbleSort = function () {
       var length = array.length;
       for (var i = 0; i < length; i++) {
@@ -76,7 +73,6 @@
        }
     }
 
-    //Selection Sort
     this.selectionSort = function () {
       var length = array.length;
       var indexMin;
@@ -94,7 +90,6 @@
       }
     };
 
-    //Insertion Sort
     this.insertionSort = function () {
       var length = array.length;
       var j;
@@ -114,13 +109,12 @@
 
 
     /* 
-      The merge sort is a divide-and-conquer algorithm. The idea behind it is to divide 
+      Merge sort is a divide-and-conquer algorithm. The idea behind it is to divide 
       original array into smaller arrays until each small array has only one position
       and then merge these smaller arrays into bigger ones until we have a single big array
       at the end that is sorted. 
     */
 
-    //Merge Sort
     this.mergeSort = function () {
       array = mergeSortRecursion(array);
     };
@@ -164,6 +158,7 @@
 
   var sortingCall = new MasterSortingFunction();
 
+  //Genenerates an array that is in intervals of 360 denominations, ie 360,720..
   function generate360array() {
     var g360a = [];
     for (var i = 0; i < totalColorWheelSteps; i++) {
@@ -173,7 +168,7 @@
   }
 
 
-  // Fisher-Yates (aka Knuth) Shuffle, for reordering color wheel postions.
+  // Fisher-Yates Shuffle algorithm;For reordering color wheel spokes postions.
   function shuffle(array) {
     var currentIndex = array.length,
       temporaryValue, randomIndex;
