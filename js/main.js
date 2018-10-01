@@ -58,16 +58,14 @@
       var aux2 = array[index2];
       array[index1] = array[index2]; //Change Point
       if(sortfunc === 'bubble'){
-       changingStateList.set(incrementalKey++,'count');//count
-       changingStateList.set(incrementalKey++,index1)//position index
+       changingStateList.set(incrementalKey++,index1)//index in array/colorwheel to change
        changingStateList.set(incrementalKey++,aux)//from this number (actually apart of the bubble sort)
        changingStateList.set(incrementalKey++,aux2)//to this number (actually apart of the bubble sort)
   
       }
       array[index2] = aux; //Change Point
       if(sortfunc === 'bubble'){
-        changingStateList.set(incrementalKey++,'count');//count
-        changingStateList.set(incrementalKey++,index2)//position
+        changingStateList.set(incrementalKey++,index2)//index in arraycolorwheel to change
         changingStateList.set(incrementalKey++,aux2)//from this number (actually apart of the bubble sort)
         changingStateList.set(incrementalKey++,aux)//to this number (actually part of the bubble sort)
        }
@@ -195,7 +193,11 @@
   sortingCall.insert(g360a);
   sortingCall.bubbleSort(); //Doesn't show order/state at each array change as of now...
   console.log(sortingCall.toSortedArray());
+  console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
+  console.log(`1:index changed,2:what that index is was,3: what that index is changed too. etc`);
   console.log(sortingCall.showStateList());
+  //Side note, might want to move most of the functionality below to reset page later and base it off of the selected sort algorithm,
+  //also add a side explanation to the page for each sorting algorithm so it is more intuitive.
 
   //sortedarray is sorted, g360a is what it sorts.
   var sortedArray = sortingCall.toSortedArray();
