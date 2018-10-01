@@ -194,7 +194,7 @@
   sortingCall.bubbleSort(); //Doesn't show order/state at each array change as of now...
   console.log(sortingCall.toSortedArray());
   console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
-  console.log(`1:index changed,2:what that index is was,3: what that index is changed too. etc`);
+  console.log(`0:index changed,1:what that index is was,2: what that index is changed too. etc`);
   console.log(sortingCall.showStateList());
   //Side note, might want to move most of the functionality below to reset page later and base it off of the selected sort algorithm,
   //also add a side explanation to the page for each sorting algorithm so it is more intuitive.
