@@ -196,6 +196,7 @@
   console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
   console.log(`0:index changed,1:what that index is was,2: what that index is changed too. etc`);
   console.log(sortingCall.showStateList());
+  var stateList = sortingCall.showStateList(); //Man this code is getting sloppy... Plan to fix.
   //Side note, might want to move most of the functionality below to reset page later and base it off of the selected sort algorithm,
   //also add a side explanation to the page for each sorting algorithm so it is more intuitive.
 
@@ -215,10 +216,13 @@
     document.getElementById('colorwheel').appendChild(color);
   };
 
-
+var cTemp = -1;
   displaySortingAnimation = function () {
-    document.getElementById("d" + temporaryVariableDontUse).style.backgroundColor = "hsl(" + sortedArray[temporaryVariableDontUse] + ", 100%, 50%)";
+    //based on instructions in console for BUBBLE SORT:
+    document.getElementById("d" + stateList.get(cTemp+=1)).style.backgroundColor = "hsl(" + stateList.get(cTemp+=1) + ", 100%, 50%)";
+    document.getElementById("d" + stateList.get(cTemp-=1)).style.backgroundColor = "hsl(" + stateList.get(cTemp+=2) + ", 100%, 50%)";
     temporaryVariableDontUse++;
+    
     //Make it so this reads the state from the sorting function instead...
     //console.log(temporaryVariableDontUse);
   };
