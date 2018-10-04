@@ -1,32 +1,28 @@
 (function () {
-  //This IIFE contains the four (4) sorting functions: Bubble Sort, Selection Sort, Insertion Sort, and Merge Sort.
+  //This IIFE contains the four sorting algorithms: Bubble Sort, Selection Sort, Insertion Sort, Merge Sort.
   //All are modified from another source. MasterSortingFunction is an ES5 constructor.
-  var multiplierForColorWheelSize = 1; //Breaks around 12.
-  var colorWheelSizeInitial = 360;
+  const colorWheelSizeInitial = 77;
+  var multiplierForColorWheelSize = 1; 
+  var initSpeedValueOfAnimationMilliseconds = 500;
   var totalColorWheelSteps = multiplierForColorWheelSize * colorWheelSizeInitial;
-  var initSpeedValueOfAnimation = 500;
-
-  /*There's definitely an GOF solution to this, thinking singelton to save memory.
-  var bubbleSortObjectToMakeVisualOutputLessPriceyTemplate = {
-    recordedChangePointOrder: null,
-    changedPostionsInTheArrayForBubbleSort: [null],
-    correspondingValuesForWhatTheyWereChangedToo: [null]
-  };
-
-  Template of the map 'changingStateList'^
-  */
-
+  //Makes it so there is a always a full circle no matter what the size of the wheel.
+  var colorWheelIndividualSpikesAngleChange = 360/totalColorWheelSteps;
+  //Higher numbers add a higher color range:=, and vice versa.
+  var rangeOfColorsMultiplier = 1;
+ 
 
   function MasterSortingFunction() {
     let array = [];
+    //Records the changes in the array caused by the sorting algorithms so that it can be played back later.
     let changingStateList = new Map();
     var incrementalKey = 0;
 
     this.insert = function (item) {
-      //Clearing out old information for reset.
+      //Changes
       array = [];
       changingStateList.clear();
       incrementalKey = 0;
+
       array = array.concat(item);
     };
 
@@ -205,26 +201,26 @@
   //Color wheel initial creation unsorted (provided under MIT licence)Source:_:
   for (var i = 0; i < totalColorWheelSteps; i++) {
     var color = document.createElement("span"); //rescope for the for use in reset function
-    color.setAttribute("id", "d" + i);
-    color.style.backgroundColor = "hsl(" + (g360a[i]) + ", 100%, 50%)"; //only need to change this part for proper reset.
-    color.style.msTransform = "rotate(" + i / multiplierForColorWheelSize + "deg)";
-    color.style.webkitTransform = "rotate(" + i / multiplierForColorWheelSize + "deg)";
-    color.style.MozTransform = "rotate(" + i / multiplierForColorWheelSize + "deg)";
-    color.style.OTransform = "rotate(" + i / multiplierForColorWheelSize + "deg)";
-    color.style.transform = "rotate(" + i / multiplierForColorWheelSize + "deg)";
+  color.setAttribute("id", "d" + i); 
+    color.style.backgroundColor = "hsl(" + (g360a[i]*rangeOfColorsMultiplier) + ", 100%, 50%)"; //only need to change this part for proper reset.
+    color.style.msTransform = "rotate(" + i*(colorWheelIndividualSpikesAngleChange) + "deg)";//spikes divided by 360?
+    color.style.webkitTransform = "rotate("+ i*(colorWheelIndividualSpikesAngleChange) + "deg)";
+    color.style.MozTransform = "rotate(" +i*(colorWheelIndividualSpikesAngleChange) + "deg)";
+    color.style.OTransform = "rotate(" + i*(colorWheelIndividualSpikesAngleChange) + "deg)";
+    color.style.transform = "rotate(" + i*(colorWheelIndividualSpikesAngleChange) + "deg)";
     document.getElementById('colorwheel').appendChild(color);
   };
 
   var cTemp = -1;
   displaySortingAnimation = function () {
     //based on instructions in console for BUBBLE SORT:
-    document.getElementById("d" + stateList.get(cTemp += 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 1) + ", 100%, 50%)";
-    document.getElementById("d" + stateList.get(cTemp -= 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 2) + ", 100%, 50%)";
+    document.getElementById("d" + stateList.get(cTemp += 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 1)*rangeOfColorsMultiplier + ", 100%, 50%)";
+    document.getElementById("d" + stateList.get(cTemp -= 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 2)*rangeOfColorsMultiplier + ", 100%, 50%)";
 
   };
 
 
-  var animation = setInterval(displaySortingAnimation, initSpeedValueOfAnimation);
+  var animation = setInterval(displaySortingAnimation, initSpeedValueOfAnimationMilliseconds);
   //Getting form data, needs to be reformatted for onchange event
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('select[name="algorithms"]').onchange = changeEventHandler;
