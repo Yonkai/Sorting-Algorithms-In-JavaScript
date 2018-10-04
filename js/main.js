@@ -1,7 +1,7 @@
 (function () {
   //This IIFE contains the four sorting algorithms: Bubble Sort, Selection Sort, Insertion Sort, Merge Sort.
   //All are modified from another source. MasterSortingFunction is an ES5 constructor.
-  const colorWheelSizeInitial = 77;
+  const colorWheelSizeInitial = 360;
   var multiplierForColorWheelSize = 1; 
   var initSpeedValueOfAnimationMilliseconds = 500;
   var totalColorWheelSteps = multiplierForColorWheelSize * colorWheelSizeInitial;
@@ -55,14 +55,16 @@
       var aux = array[index1];
       var aux2 = array[index2];
       array[index1] = array[index2]; //Change Point
-      if (sortfunc === 'bubble') {
+      //NEED TO MAKE SURE THIS IS ACTUALLY LEGITMATE BECAUSE IT TOTALLY COULD NOT BE
+      //CHANGES -> SWITCHED SORTING FUNC SELECTED BELOW AND ADDED '|| `selection`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      if (sortfunc === 'bubble'|| sortfunc ==='selection') {
         changingStateList.set(incrementalKey++, index1) //index in array/colorwheel to change
         changingStateList.set(incrementalKey++, aux) //from this number (actually apart of the bubble sort)
         changingStateList.set(incrementalKey++, aux2) //to this number (actually apart of the bubble sort)
 
       }
       array[index2] = aux; //Change Point
-      if (sortfunc === 'bubble') {
+      if (sortfunc === 'bubble' || sortfunc==='selection') {
         changingStateList.set(incrementalKey++, index2) //index in arraycolorwheel to change
         changingStateList.set(incrementalKey++, aux2) //from this number (actually apart of the bubble sort)
         changingStateList.set(incrementalKey++, aux) //to this number (actually part of the bubble sort)
@@ -81,7 +83,7 @@
           }
         }
         if (i !== indexMin) {
-          swap(array, i, indexMin);
+          swap(array, i, indexMin, 'selection');
         }
       }
     };
@@ -189,7 +191,7 @@
   shuffle(g360a);
   console.log(g360a);
   sortingCall.insert(g360a);
-  sortingCall.bubbleSort(); 
+  sortingCall.selectionSort(); 
   console.log(sortingCall.toSortedArray());
   console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
   console.log(`0:index changed,1:what that index is was,2: what that index is changed too. etc`);
