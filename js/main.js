@@ -23,6 +23,7 @@
     var incrementalKey = 0;
 
     this.insert = function (item) {
+      //Clearing out old information for reset.
       array = [];
       changingStateList.clear();
       incrementalKey = 0;
@@ -277,7 +278,7 @@
 })();
 
 //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
-//Set a cookie for delay
+//Set a cookie for delay.
 //Also display the big-O efficieny chart
 //Make the code less ugly
 
