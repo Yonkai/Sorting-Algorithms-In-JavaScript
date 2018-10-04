@@ -1,12 +1,10 @@
 (function () {
   //This IIFE contains the four (4) sorting functions: Bubble Sort, Selection Sort, Insertion Sort, and Merge Sort.
-  //All are modified from another source. MasterSortingFunction is an ES% constructor. b
+  //All are modified from another source. MasterSortingFunction is an ES5 constructor.
   var multiplierForColorWheelSize = 1; //Breaks around 12.
   var colorWheelSizeInitial = 360;
   var totalColorWheelSteps = multiplierForColorWheelSize * colorWheelSizeInitial;
   var initSpeedValueOfAnimation = 500;
-  var temporaryVariableDontUse = 0; //User best practice instead.
-  //keeps track of changes by the various sorting algorithms.
 
   /*There's definitely an GOF solution to this, thinking singelton to save memory.
   var bubbleSortObjectToMakeVisualOutputLessPriceyTemplate = {
@@ -25,6 +23,9 @@
     var incrementalKey = 0;
 
     this.insert = function (item) {
+      array = [];
+      changingStateList.clear();
+      incrementalKey = 0;
       array = array.concat(item);
     };
 
@@ -46,7 +47,7 @@
       for (var i = 0; i < length; i++) {
         for (var j = 0; j < length - 1 - i; j++) {
           if (array[j] > array[j + 1]) {
-            swap(array, j, j + 1,'bubble');
+            swap(array, j, j + 1, 'bubble');
           }
         }
       }
@@ -57,18 +58,18 @@
       var aux = array[index1];
       var aux2 = array[index2];
       array[index1] = array[index2]; //Change Point
-      if(sortfunc === 'bubble'){
-       changingStateList.set(incrementalKey++,index1)//index in array/colorwheel to change
-       changingStateList.set(incrementalKey++,aux)//from this number (actually apart of the bubble sort)
-       changingStateList.set(incrementalKey++,aux2)//to this number (actually apart of the bubble sort)
-  
+      if (sortfunc === 'bubble') {
+        changingStateList.set(incrementalKey++, index1) //index in array/colorwheel to change
+        changingStateList.set(incrementalKey++, aux) //from this number (actually apart of the bubble sort)
+        changingStateList.set(incrementalKey++, aux2) //to this number (actually apart of the bubble sort)
+
       }
       array[index2] = aux; //Change Point
-      if(sortfunc === 'bubble'){
-        changingStateList.set(incrementalKey++,index2)//index in arraycolorwheel to change
-        changingStateList.set(incrementalKey++,aux2)//from this number (actually apart of the bubble sort)
-        changingStateList.set(incrementalKey++,aux)//to this number (actually part of the bubble sort)
-       }
+      if (sortfunc === 'bubble') {
+        changingStateList.set(incrementalKey++, index2) //index in arraycolorwheel to change
+        changingStateList.set(incrementalKey++, aux2) //from this number (actually apart of the bubble sort)
+        changingStateList.set(incrementalKey++, aux) //to this number (actually part of the bubble sort)
+      }
     }
 
     this.selectionSort = function () {
@@ -191,17 +192,14 @@
   shuffle(g360a);
   console.log(g360a);
   sortingCall.insert(g360a);
-  sortingCall.bubbleSort(); //Doesn't show order/state at each array change as of now...
+  sortingCall.bubbleSort(); 
   console.log(sortingCall.toSortedArray());
   console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
   console.log(`0:index changed,1:what that index is was,2: what that index is changed too. etc`);
   console.log(sortingCall.showStateList());
-  var stateList = sortingCall.showStateList(); //Man this code is getting sloppy... Plan to fix.
+  var stateList = sortingCall.showStateList(); //Need to clean up code so it is less sloppy.
   //Side note, might want to move most of the functionality below to reset page later and base it off of the selected sort algorithm,
   //also add a side explanation to the page for each sorting algorithm so it is more intuitive.
-
-  //sortedarray is sorted, g360a is what it sorts.
-  var sortedArray = sortingCall.toSortedArray();
 
   //Color wheel initial creation unsorted (provided under MIT licence)Source:_:
   for (var i = 0; i < totalColorWheelSteps; i++) {
@@ -216,15 +214,12 @@
     document.getElementById('colorwheel').appendChild(color);
   };
 
-var cTemp = -1;
+  var cTemp = -1;
   displaySortingAnimation = function () {
     //based on instructions in console for BUBBLE SORT:
-    document.getElementById("d" + stateList.get(cTemp+=1)).style.backgroundColor = "hsl(" + stateList.get(cTemp+=1) + ", 100%, 50%)";
-    document.getElementById("d" + stateList.get(cTemp-=1)).style.backgroundColor = "hsl(" + stateList.get(cTemp+=2) + ", 100%, 50%)";
-    temporaryVariableDontUse++;
-    
-    //Make it so this reads the state from the sorting function instead...
-    //console.log(temporaryVariableDontUse);
+    document.getElementById("d" + stateList.get(cTemp += 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 1) + ", 100%, 50%)";
+    document.getElementById("d" + stateList.get(cTemp -= 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 2) + ", 100%, 50%)";
+
   };
 
 
@@ -243,9 +238,20 @@ var cTemp = -1;
       document.getElementById("d" + i).style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)";
 
     };
-    g360a = generate360array();
-    shuffle(g360a);
-    temporaryVariableDontUse = 0;
+ 
+  //DRY Code Below:
+  g360a = generate360array();
+  shuffle(g360a);
+  console.log(g360a);
+  sortingCall.insert(g360a);
+  sortingCall.bubbleSort(); 
+  console.log(sortingCall.toSortedArray());
+  console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
+  console.log(`0:index changed,1:what that index is was,2: what that index is changed too. etc`);
+  console.log(sortingCall.showStateList());
+  stateList = sortingCall.showStateList();
+  cTemp = -1;
+
   }
 
   function beginNewSort() {
@@ -263,7 +269,7 @@ var cTemp = -1;
   var speedDelayElement = document.getElementById('speedDelay');
   speedDelayElement.onchange = function () {
     var r = document.getElementById('speedDelay').value;
-    console.log(r+"ms: New speed delay.");
+    console.log(r + "ms: New speed delay.");
     clearInterval(animation);
     animation = setInterval(displaySortingAnimation, r);
   };
@@ -271,8 +277,9 @@ var cTemp = -1;
 })();
 
 //Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
-//Also display the big-o efficieny chart.
-//Make this code less ugly/space it out like express/node code. or just react
+//Set a cookie for delay
+//Also display the big-O efficieny chart
+//Make the code less ugly
 
-//Refactor this code after everything is done with better comments and structures(OOP JS GUIDE).
-//Move variables to top, initialize at bottom, functions in the middle, out of global scope, check for leaks
+//Refactor this code after everything is done with better comments and modularity(OOP?)
+//Move variables to top, initialize at bottom, functions in the middle, out of global scope, check for leaks, bug tesing
