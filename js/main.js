@@ -98,10 +98,10 @@
         temp = array[i];
 
         while (j > 0 && array[j - 1] > temp) {
-          array[j] = array[j - 1];
+          array[j] = array[j - 1]; //Change Point
           j--;
         }
-        array[j] = temp;
+        array[j] = temp; //Change Point
       }
     }
 
@@ -113,6 +113,7 @@
       at the end that is sorted. 
     */
 
+    /*Stack trace merge sort */
     this.mergeSort = function () {
       array = mergeSortRecursion(array);
     };
