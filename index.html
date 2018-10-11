@@ -8,25 +8,60 @@
   <meta name="description" content="Visual interactive sorting algorithm demo.">
   <meta name="keywords" content="HTML,CSS,JavaScript">
   <meta name="author" content="Frank Gunsch"> <!-- SEO Optimization?-->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no,  user-scalable=no">
+  <meta http-equiv="cleartype" content="on">
+  <meta name="MobileOptimized" content="320">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/media-query.css">
 </head>
 
-<body>
-  <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
- 
-  <!-- Add your site or application content here -->
+<style>
+  body {
+    width: 100%;
+    height: 100%;
+  }
 
-  <!--Add options for controls for RESET,SPEED DELAY and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
-  -->
+  .slideout-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    width: 256px;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+  }
+
+  .slideout-panel {
+    position: relative;
+    z-index: 1;
+    will-change: transform;
+  }
+
+  .slideout-open,
+  .slideout-open body,
+  .slideout-open .slideout-panel {
+    overflow: hidden;
+  }
+
+  .slideout-open .slideout-menu {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<nav id="menu">
+  <h2>Options</h2>
   <select id="algorithmsDropdown" name="algorithms">
     <!--
       If an <option> element is set with a value attribute, 
@@ -48,6 +83,39 @@
   <input  value="500" type="range" name="Speed Delay(ms)" id="speedDelay" min="1" max="1000" step="10">
   <!-- TODO: Show big-o efficient when a different sorting algorithm is selected. -->
    <p class="informationBox">Information:</p>
+</nav>
+
+<main id="panel">
+  <header>
+    <button class="toggle-button">☰</button>
+    <h2></h2>
+  </header>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+<script>
+  var slideout = new Slideout({
+    'panel': document.getElementById('panel'),
+    'menu': document.getElementById('menu'),
+    'padding': 256,
+    'tolerance': 70
+  });
+  slideout.open();
+
+  // Toggle button
+  document.querySelector('.toggle-button').addEventListener('click', function() {
+    slideout.toggle();
+  });
+</script>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+ 
+  <!-- Add your site or application content here -->
+
+  <!--Add options for controls for RESET,SPEED DELAY and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
+  -->
+
 <!-- Added all options as a pull out menu for a cleaner look, alongside normal responsive design.-->
 
   <div id="colorwheel"></div>
@@ -58,6 +126,7 @@
     window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')
 
   </script>
+
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
 
