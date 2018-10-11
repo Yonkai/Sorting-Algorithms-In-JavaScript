@@ -1,14 +1,14 @@
 (function () {
   //This IIFE contains the four sorting algorithms: Bubble Sort, Selection Sort, Insertion Sort, Merge Sort.
   //All are modified from another source. MasterSortingFunction is an ES5 constructor.
-  const colorWheelSizeInitial = 360;
+  const colorWheelSizeInitial = 100;
   var multiplierForColorWheelSize = 1; 
   var initSpeedValueOfAnimationMilliseconds = 500;
   var totalColorWheelSteps = multiplierForColorWheelSize * colorWheelSizeInitial;
   //Makes it so there is a always a full circle no matter what the size of the wheel.
   var colorWheelIndividualSpikesAngleChange = 360/totalColorWheelSteps;
   //Higher numbers add a higher color range:=, and vice versa.
-  var rangeOfColorsMultiplier = 1;
+  var rangeOfColorsMultiplier = 3;
  
 
   function MasterSortingFunction() {
@@ -244,6 +244,7 @@
   shuffle(g360a);
   console.log(g360a);
   sortingCall.insert(g360a);
+  //Change this based on selected algorithm, also, update information. 
   sortingCall.bubbleSort(); 
   console.log(sortingCall.toSortedArray());
   console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
