@@ -138,6 +138,7 @@ textarea {
 
   #speedDelayLabel{
       color:white;
+      display:block;
   }
 
   .menuTitle,.menuOptions,.informationBox, .spikeCount, .colorRangeName, .creatorInfo {

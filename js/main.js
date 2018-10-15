@@ -230,7 +230,6 @@
   }, false);
 
   document.getElementById("resetButton").addEventListener("click", resetPage);
-  document.getElementById("sortButton").addEventListener("click", beginNewSort);
 
 
   function resetPage() {
@@ -253,10 +252,6 @@
   stateList = sortingCall.showStateList();
   cTemp = -1;
 
-  }
-
-  function beginNewSort() {
-    console.log("TODO");
   }
 
   function changeEventHandler(event) {
