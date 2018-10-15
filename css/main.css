@@ -145,7 +145,7 @@ textarea {
     margin-left:3px;
   }
   #menu{
-      background: linear-gradient(#111, #222);
+      background: linear-gradient(hsla(0, 0%, 7%, 0.87), hsl(0, 0%, 13%));
       z-index:2;
   }
 
