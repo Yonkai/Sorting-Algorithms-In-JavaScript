@@ -61,8 +61,8 @@
 <body>
 
 <nav id="menu">
-  <h2>Sorting Algorithm Visualizer</h2>
-  <h3>Options</h3>
+  <h2 class="menuTitle">Sorting Algorithm Visualizer</h2>
+  <h3 class="menuOptions">Options</h3>
   <select id="algorithmsDropdown" name="algorithms">
     <!--
       If an <option> element is set with a value attribute, 
@@ -83,10 +83,10 @@
   <label for="speedDelay" id="speedDelayLabel">Delay:</label>
   <input  value="500" type="range" name="Speed Delay(ms)" id="speedDelay" min="1" max="1000" step="10">
   <!-- TODO: Show big-o efficient when a different sorting algorithm is selected. -->
+   <p class="spikeCount"> Spike count:</p>
+   <p class="colorRangeName"> Color Range:</p>
    <p class="informationBox">Information:</p>
-   <p> Spike count</p>
-   <p> Color Range</p>
-   <p> Frank Gunsch Development</p>
+   <p class="creatorInfo"> Frank Gunsch Development</p>
 </nav>
 
 <main id="panel">

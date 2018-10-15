@@ -140,8 +140,9 @@ textarea {
       color:white;
   }
 
-  .informationBox{
-    color:white;
+  .menuTitle,.menuOptions,.informationBox, .spikeCount, .colorRangeName, .creatorInfo {
+    color:hsl(0, 0%, 83%);
+    margin-left:3px;
   }
   #menu{
       background: linear-gradient(#111, #222);
