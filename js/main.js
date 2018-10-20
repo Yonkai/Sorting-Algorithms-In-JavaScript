@@ -1,7 +1,7 @@
 (function () {
   //This IIFE contains the four sorting algorithms: Bubble Sort, Selection Sort, Insertion Sort, Merge Sort.
   //All are modified from another source. MasterSortingFunction is an ES5 constructor.
-  const colorWheelSizeInitial = 100;
+  var colorWheelSizeInitial = 100;
   var multiplierForColorWheelSize = 1; 
   var initSpeedValueOfAnimationMilliseconds = 500;
   var totalColorWheelSteps = multiplierForColorWheelSize * colorWheelSizeInitial;
@@ -9,6 +9,13 @@
   var colorWheelIndividualSpikesAngleChange = 360/totalColorWheelSteps;
   //Higher numbers add a higher color range:=, and vice versa.
   var rangeOfColorsMultiplier = 3;
+
+  var information = {
+    bubble:`placeholder`,
+    insertion:`placeholder`,
+    merge:`placehoder`,
+    selection:`placeholder`
+  };
  
 
   function MasterSortingFunction() {
@@ -20,8 +27,9 @@
     this.insert = function (item) {
       //Changes
       array = [];
-      changingStateList.clear();
       incrementalKey = 0;
+      changingStateList.clear();
+      
 
       array = array.concat(item);
     };
@@ -57,7 +65,7 @@
       array[index1] = array[index2]; //Change Point
       //NEED TO MAKE SURE THIS IS ACTUALLY LEGITMATE BECAUSE IT TOTALLY COULD NOT BE
       //CHANGES -> SWITCHED SORTING FUNC SELECTED BELOW AND ADDED '|| `selection`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      if (sortfunc === 'bubble'|| sortfunc ==='selection') {
+      if (sortfunc === 'bubble' || sortfunc ==='selection') {
         changingStateList.set(incrementalKey++, index1) //index in array/colorwheel to change
         changingStateList.set(incrementalKey++, aux) //from this number (actually apart of the bubble sort)
         changingStateList.set(incrementalKey++, aux2) //to this number (actually apart of the bubble sort)
@@ -93,15 +101,24 @@
       var j;
       var temp;
 
-      for (var i = 1; i < length; i++) {
+      for (var i = 0; i < length; i++) {
         j = i;
         temp = array[i];
 
         while (j > 0 && array[j - 1] > temp) {
+          var statelisttemp=array[j];
           array[j] = array[j - 1]; //Change Point
+          var index = j;
+          var changedstatelisttemp=array[j];
           j--;
+          //BUG: First part of array doesn't sort/display
+          changingStateList.set(incrementalKey++, index); //index in arraycolorwheel to change
+          changingStateList.set(incrementalKey++, statelisttemp);//from this number (actually apart of the  sort)
+          changingStateList.set(incrementalKey++, changedstatelisttemp); //to this number (actually part of the  sort)
+          
         }
         array[j] = temp; //Change Point
+        //changingStateList
       }
     }
 
@@ -192,7 +209,7 @@
   shuffle(g360a);
   console.log(g360a);
   sortingCall.insert(g360a);
-  sortingCall.selectionSort(); 
+  sortingCall.insertionSort(); 
   console.log(sortingCall.toSortedArray());
   console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
   console.log(`0:index changed,1:what that index is was,2: what that index is changed too. etc`);
@@ -234,7 +251,7 @@
 
   function resetPage() {
     for (var i = 0; i < totalColorWheelSteps; i++) {
-      document.getElementById("d" + i).style.backgroundColor = "hsl(" + g360a[i] + ", 100%, 50%)";
+      document.getElementById("d" + i).style.backgroundColor = "hsl(" + g360a[i]*rangeOfColorsMultiplier + ", 100%, 50%)";
 
     };
  
