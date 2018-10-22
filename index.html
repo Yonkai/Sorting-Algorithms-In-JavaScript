@@ -62,8 +62,39 @@
 <body>
 
 <nav id="menu">
-  <h2 class="menuTitle">Sorting Algorithm Visualizer</h2>
-  <h3 class="menuOptions">Options</h3>
+  <h1 class="menuTitle">Sorting Algorithm Visualizer</h1>
+  <h2 class="menuOptions">Options</h2>
+  <form class="algoForm">
+    <fieldset>
+        <legend>Select an algorithm:</legend>
+
+        <div>
+            <input type="radio" id="BubbleSort"
+                   name="drone" value="BubbleSort" checked />
+            <label for="BubbleSort">BubbleSort</label>
+        </div>
+
+        <div>
+            <input type="radio" id="InsertionSort"
+                   name="drone" value="InsertionSort" />
+            <label for="InsertionSort">InsertionSort</label>
+        </div>
+
+        <div>
+            <input type="radio" id="SelectionSort"
+                   name="drone" value="SelectionSort" />
+            <label for="SelectionSort">SelectionSort</label>
+        </div>
+
+        <div>
+          <input type="radio" id="MergeSort"
+                 name="drone" value="MergeSort" />
+          <label for="MergeSort">MergeSort</label>
+      </div>
+
+    </fieldset>
+</form>
+
   <!-- Add radio buttons for -->
   <button type="reset" id="resetButton">
     RESET

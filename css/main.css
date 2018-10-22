@@ -141,7 +141,7 @@ textarea {
       display:block;
   }
 
-  .githubCommunications, .menuTitle,.menuOptions,.informationBox, .spikeCount, .colorRangeName, .creatorInfo {
+  .algoForm,.githubCommunications, .menuTitle,.menuOptions,.informationBox, .spikeCount, .colorRangeName, .creatorInfo {
     color:hsl(0, 0%, 83%);
     margin-left:3px;
   }

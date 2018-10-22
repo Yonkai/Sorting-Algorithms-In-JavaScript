@@ -107,7 +107,7 @@
 
         while (j > 0 && array[j - 1] > temp) {
           var statelisttemp=array[j];
-          array[j] = array[j - 1]; //Change Point
+          array[j] = array[j - 1]; //Change Point add this
           var index = j;
           var changedstatelisttemp=array[j];
           j--;
