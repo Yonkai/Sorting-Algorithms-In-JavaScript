@@ -100,14 +100,19 @@
     RESET
   </button>
   
-  <label for="speedDelay" id="speedDelayLabel">Delay:</label>
-  <input  value="500" type="range" name="Speed Delay(ms)" id="speedDelay" min="1" max="1000" step="10">
-  <!-- TODO: Show big-o efficient when a different sorting algorithm is selected. -->
-   <p class="spikeCount"> Spike count:</p>
-   <p class="spikeCount"> Spike size:</p>
-   <p class="colorRangeName"> Color Range:</p>
+  <label for="speedDelay" id="speedDelayLabel">Delay(ms):</label>
+  <input  value="200" type="number" name="Speed Delay(ms)" id="speedDelay" min="1" max="2000" step="50">
+
+  <label for="spikeCount" id="spikeCountLabel">No. Spikes:</label>
+  <input  value="100" type="number" name="spikeCount" id="spikeCount" min="1" max="500" step="5">
+
+  <label for="colorRange" id="colorRangeLabel">Color Range:</label>
+  <input  value="1" type="number" name="colorRange" id="colorRange" min="1" max="6" step="1">
+
+
+
    <p class="informationBox">Information:</p>
-   <p class="creatorInfo"> Frank Gunsch Development</p>
+   <p class="creatorInfo">Frank Gunsch Development</p>
    <p class="githubCommunications"><a href="https://github.com/Yonkai" target="_blank"><i class="fab fa-github fa-2x "></i></a></p>
 </nav>
 

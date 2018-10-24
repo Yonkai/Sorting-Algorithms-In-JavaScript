@@ -136,7 +136,7 @@ textarea {
     border-bottom-right-radius: 100%;
   }
 
-  #speedDelayLabel{
+  #speedDelayLabel, #spikeCountLabel,#colorRangeLabel{
       color:white;
       display:block;
   }
