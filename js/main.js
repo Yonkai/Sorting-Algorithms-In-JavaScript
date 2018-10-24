@@ -10,6 +10,7 @@
   //Higher numbers add a higher color range:=, and vice versa.
   var rangeOfColorsMultiplier = 3;
 
+  //Form 'algorithm informaiton' text 
   var information = {
     bubble:`Bubble Sort works by repeatedly swapping the
      adjacent elements if they are in the 
@@ -29,6 +30,7 @@
   };
  
 
+  //Sorting Algorithm constructor
   function MasterSortingFunction() {
     let array = [];
     //Records the changes in the array caused by the sorting algorithms so that it can be played back later.
@@ -175,13 +177,11 @@
 
       while (il < left.length) {
         result.push(left[il++]);
-        changingStateList.set(incrementalKey++,result);
 
       }
 
       while (ir < right.length) {
         result.push(right[ir++]);
-        changingStateList.set(incrementalKey++,result);
 
       }
 
@@ -223,11 +223,12 @@
     return array;
   }
 
+  //A LOT OF DEBUGGING STUFF
   var g360a = generate360array();
   shuffle(g360a);
   console.log(g360a);
   sortingCall.insert(g360a);
-  sortingCall.mergeSort(); 
+  sortingCall.selectionSort(); 
   console.log(sortingCall.toSortedArray());
   console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
   console.log(`0:index changed,1:what that index is was,2: what that index is changed too. etc`);
@@ -250,22 +251,20 @@
   };
 
   var cTemp = -1;
-  var displaySortingAnimationFlag = "merge";
+  var displaySortingAnimationFlag = false;
   displaySortingAnimation = function () {
     if(displaySortingAnimationFlag){
-      document.getElementById("d" + stateList.get(cTemp += 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 1)*rangeOfColorsMultiplier + ", 100%, 50%)";
-      document.getElementById("d" + stateList.get(cTemp -= 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 2)*rangeOfColorsMultiplier + ", 100%, 50%)";
+
     }else{
     //based on (or for) instructions in console for BUBBLE SORT, INSERTION SORT, AND SELECTION SORT:
     document.getElementById("d" + stateList.get(cTemp += 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 1)*rangeOfColorsMultiplier + ", 100%, 50%)";
     document.getElementById("d" + stateList.get(cTemp -= 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 2)*rangeOfColorsMultiplier + ", 100%, 50%)";
-    //Merge Sort
     }
   };
 
-
   var animation = setInterval(displaySortingAnimation, initSpeedValueOfAnimationMilliseconds);
-  //Getting form data, needs to be reformatted for onchange event
+
+  //Getting form data:
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('select[name="algorithms"]').onchange = changeEventHandler;
   }, false);
@@ -273,6 +272,8 @@
   document.getElementById("resetButton").addEventListener("click", resetPage);
 
 
+
+  //Reset based on inputed text
   function resetPage() {
     for (var i = 0; i < totalColorWheelSteps; i++) {
       document.getElementById("d" + i).style.backgroundColor = "hsl(" + g360a[i]*rangeOfColorsMultiplier + ", 100%, 50%)";
@@ -295,14 +296,13 @@
 
   }
 
+  
   function changeEventHandler(event) {
     console.log(event);
-    var algoDropdown = document.getElementById("algorithmsDropdown");
-    var strUser = algoDropdown.options[algoDropdown.selectedIndex].value;
-    var strUser2 = algoDropdown.options[algoDropdown.selectedIndex].text;
-    console.log(strUser, strUser2);
+    //Switch a algorithm Flag
   }
 
+  //speed delay input
   var speedDelayElement = document.getElementById('speedDelay');
   speedDelayElement.onchange = function () {
     var r = document.getElementById('speedDelay').value;
@@ -310,10 +310,13 @@
     clearInterval(animation);
     animation = setInterval(displaySortingAnimation, r);
   };
-  //End getting form data, needs to be reformatted  
+  
+  //spike count input
+
+  //color range input
+
 })();
 
-//Add options for controls for RESET,SPEED DELAY, NUMBER OF VALUES, and a DROP DOWN MENU FOR THE ALGORITHMS, and SOUND like in the youtube videos
 //Set a cookie for delay.
 //Also display the big-O efficieny chart
 //Make the code less ugly
