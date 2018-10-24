@@ -165,17 +165,24 @@
       while (il < left.length && ir < right.length) {
         if (left[il] < right[ir]) {
           result.push(left[il++]);
+           changingStateList.set(incrementalKey++,result);
         } else {
           result.push(right[ir++]);
+          changingStateList.set(incrementalKey++,result);
+
         }
       }
 
       while (il < left.length) {
-        result.push(left[il++])
+        result.push(left[il++]);
+        changingStateList.set(incrementalKey++,result);
+
       }
 
       while (ir < right.length) {
         result.push(right[ir++]);
+        changingStateList.set(incrementalKey++,result);
+
       }
 
       return result;
@@ -220,7 +227,7 @@
   shuffle(g360a);
   console.log(g360a);
   sortingCall.insert(g360a);
-  sortingCall.insertionSort(); 
+  sortingCall.mergeSort(); 
   console.log(sortingCall.toSortedArray());
   console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
   console.log(`0:index changed,1:what that index is was,2: what that index is changed too. etc`);
@@ -243,11 +250,17 @@
   };
 
   var cTemp = -1;
+  var displaySortingAnimationFlag = "merge";
   displaySortingAnimation = function () {
-    //based on instructions in console for BUBBLE SORT:
+    if(displaySortingAnimationFlag){
+      document.getElementById("d" + stateList.get(cTemp += 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 1)*rangeOfColorsMultiplier + ", 100%, 50%)";
+      document.getElementById("d" + stateList.get(cTemp -= 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 2)*rangeOfColorsMultiplier + ", 100%, 50%)";
+    }else{
+    //based on (or for) instructions in console for BUBBLE SORT, INSERTION SORT, AND SELECTION SORT:
     document.getElementById("d" + stateList.get(cTemp += 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 1)*rangeOfColorsMultiplier + ", 100%, 50%)";
     document.getElementById("d" + stateList.get(cTemp -= 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 2)*rangeOfColorsMultiplier + ", 100%, 50%)";
-
+    //Merge Sort
+    }
   };
 
 
