@@ -11,10 +11,21 @@
   var rangeOfColorsMultiplier = 3;
 
   var information = {
-    bubble:`placeholder`,
-    insertion:`placeholder`,
-    merge:`placehoder`,
-    selection:`placeholder`
+    bubble:`Bubble Sort works by repeatedly swapping the
+     adjacent elements if they are in the 
+    wrong order. n^2 complexity.
+    https://en.wikipedia.org/wiki/bubble_sort`,
+
+    insertion:`Insertion sort is a simple sorting algorithm that builds the
+     final sorted array (or list) one 
+     item at a time.
+     https://en.wikipedia.org/wiki/Insertion_sort`,
+
+    merge:`mege sort sort is a divide and conquer sorting algorithm.
+    https://en.wikipedia.org/wiki/Merge_sort`,
+
+    selection:`In palce comparision sort.
+    https://en.wikipedia.org/wiki/Selection_sort`
   };
  
 

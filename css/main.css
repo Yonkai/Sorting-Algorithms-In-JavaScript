@@ -140,10 +140,17 @@ textarea {
       color:white;
       display:block;
   }
+  #resetButton{
+      display:block;
+  }
 
-  .algoForm,.githubCommunications, .menuTitle,.menuOptions,.informationBox, .spikeCount, .colorRangeName, .creatorInfo {
+  .algoForm,.githubCommunications, .menuTitle,.menuOptions,
+  label,.informationBox, .spikeCount, .colorRangeName, .creatorInfo,.infotext {
     color:hsl(0, 0%, 83%);
     margin-left:3px;
+  }
+  input{
+      margin-left:3px;      
   }
   #menu{
       background: linear-gradient(hsla(0, 0%, 7%, 0.87), hsl(0, 0%, 13%));
