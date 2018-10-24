@@ -1,9 +1,9 @@
 (function () {
   //This IIFE contains the four sorting algorithms: Bubble Sort, Selection Sort, Insertion Sort, Merge Sort.
   //All are modified from another source. MasterSortingFunction is an ES5 constructor.
-  var colorWheelSizeInitial = 100;
+  var colorWheelSizeInitial = 101;
   var multiplierForColorWheelSize = 1; 
-  var initSpeedValueOfAnimationMilliseconds = 500;
+  var initSpeedValueOfAnimationMilliseconds = 100;
   var totalColorWheelSteps = multiplierForColorWheelSize * colorWheelSizeInitial;
   //Makes it so there is a always a full circle no matter what the size of the wheel.
   var colorWheelIndividualSpikesAngleChange = 360/totalColorWheelSteps;
@@ -12,23 +12,20 @@
 
   //Form 'algorithm informaiton' text 
   var information = {
-    bubble:`Bubble Sort works by repeatedly swapping the
+    BubbleSort: `Bubble Sort works by repeatedly swapping the
      adjacent elements if they are in the 
-    wrong order. n^2 complexity.
-    https://en.wikipedia.org/wiki/bubble_sort`,
-
-    insertion:`Insertion sort is a simple sorting algorithm that builds the
+    wrong order. It is n^2 complexity.`,
+    BubbleSortWiki: `https://en.wikipedia.org/wiki/bubble_sort`,
+    InsertionSort: `Insertion sort is a simple sorting algorithm that builds the
      final sorted array (or list) one 
-     item at a time.
-     https://en.wikipedia.org/wiki/Insertion_sort`,
-
-    merge:`mege sort sort is a divide and conquer sorting algorithm.
-    https://en.wikipedia.org/wiki/Merge_sort`,
-
-    selection:`In palce comparision sort.
-    https://en.wikipedia.org/wiki/Selection_sort`
+     item at a time.`,
+    InsertionSortWiki: `https://en.wikipedia.org/wiki/Insertion_sort`,
+    merge: `mege sort sort is a divide and conquer sorting algorithm.`,
+    MergeSortWiki: `https://en.wikipedia.org/wiki/Merge_sort`,
+    SelectionSort: `In palce comparision sort.`,
+    SelectionSortWiki: `https://en.wikipedia.org/wiki/Selection_sort`
   };
- 
+
 
   //Sorting Algorithm constructor
   function MasterSortingFunction() {
@@ -223,7 +220,7 @@
     return array;
   }
 
-  //A LOT OF DEBUGGING STUFF
+  // Dev: Debugging
   var g360a = generate360array();
   shuffle(g360a);
   console.log(g360a);
@@ -266,14 +263,14 @@
 
   //Getting form data:
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('select[name="algorithms"]').onchange = changeEventHandler;
+    //document.querySelector('select[name="algoselections"]').onchange = changeEventHandler;
   }, false);
 
   document.getElementById("resetButton").addEventListener("click", resetPage);
 
 
 
-  //Reset based on inputed text
+  //Reset based on inputed info, should handle selected algorithm, spikes, and color range
   function resetPage() {
     for (var i = 0; i < totalColorWheelSteps; i++) {
       document.getElementById("d" + i).style.backgroundColor = "hsl(" + g360a[i]*rangeOfColorsMultiplier + ", 100%, 50%)";
@@ -299,10 +296,10 @@
   
   function changeEventHandler(event) {
     console.log(event);
-    //Switch a algorithm Flag
+    //Switch an algorithm Flag
   }
 
-  //speed delay input
+  //speed delay input, handled immediately
   var speedDelayElement = document.getElementById('speedDelay');
   speedDelayElement.onchange = function () {
     var r = document.getElementById('speedDelay').value;
@@ -314,6 +311,29 @@
   //spike count input
 
   //color range input
+
+  //information change, handled immediately
+  var radios = document.getElementsByName('algoselections');
+  var radioFormAlgo = document.getElementById('algoForm');
+
+  radioFormAlgo.addEventListener("click", function(){
+    for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+        // do whatever you want with the checked radio
+        // Dev: for debugging.
+        console.log(radios[i].value);
+        var infoparagraph = document.getElementById("infotext");
+        console.log(`${information[radios[i].value]}`);
+        console.log(infoparagraph);
+        infoparagraph.innerHTML = information[`${radios[i].value}`];
+
+        // only one radio can be logically checked, don't check the rest
+        break;
+      }
+    }
+  });
+
+  //Responsive Design Code?
 
 })();
 

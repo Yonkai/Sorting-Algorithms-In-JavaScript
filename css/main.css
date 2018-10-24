@@ -142,6 +142,7 @@ textarea {
   }
   #resetButton{
       display:block;
+      margin-left:3px;
   }
 
   .algoForm,.githubCommunications, .menuTitle,.menuOptions,

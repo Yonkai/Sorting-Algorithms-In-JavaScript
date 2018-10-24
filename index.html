@@ -64,31 +64,31 @@
 <nav id="menu">
   <h1 class="menuTitle">Sorting Algorithm Visualizer</h1>
   <h2 class="menuOptions">Options</h2>
-  <form class="algoForm">
+  <form class="algoForm" id="algoForm">
     <fieldset>
         <legend>Select an algorithm:</legend>
 
         <div>
             <input type="radio" id="BubbleSort"
-                   name="drone" value="BubbleSort" checked />
+                   name="algoselections" value="BubbleSort" checked />
             <label for="BubbleSort">Bubble Sort</label>
         </div>
 
         <div>
             <input type="radio" id="InsertionSort"
-                   name="drone" value="InsertionSort" />
+                   name="algoselections" value="InsertionSort" />
             <label for="InsertionSort">Insertion Sort</label>
         </div>
 
         <div>
             <input type="radio" id="SelectionSort"
-                   name="drone" value="SelectionSort" />
+                   name="algoselections" value="SelectionSort" />
             <label for="SelectionSort">Selection Sort</label>
         </div>
         <!-- Add later.
         <div>
           <input type="radio" id="MergeSort"
-                 name="drone" value="MergeSort" />
+                 name="algoselections" value="MergeSort" />
           <label for="MergeSort">Merge Sort</label>
       </div> -->
 
@@ -113,7 +113,7 @@
     RESET
   </button>
    <p class="informationBox">Algorithm Information:</p>
-   <p class="infotext">Bubble Sort works by repeatedly swapping the adjacent elements if they are in the wrong order. it is n^2 complexity.</p>
+   <p class="infotext" id="infotext">Bubble Sort works by repeatedly swapping the adjacent elements if they are in the wrong order. It is n^2 complexity.</p>
    <p class="creatorInfo"><i>Frank Gunsch Development</i></p>
    <p class="githubCommunications"><a href="https://github.com/Yonkai" target="_blank"><i class="fab fa-github fa-2x "></i></a></p>
 </nav>
