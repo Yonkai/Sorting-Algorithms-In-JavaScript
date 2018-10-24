@@ -158,6 +158,26 @@ textarea {
       z-index:2;
   }
 
+  /* unvisited link */
+a:link {
+    color:hsl(290, 47%, 44%);
+}
+
+/* visited link */
+a:visited {
+    color:hsl(240, 100%, 72%);
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
 
 /* ==========================================================================
    Helper classes
