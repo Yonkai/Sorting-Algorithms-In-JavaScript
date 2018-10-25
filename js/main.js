@@ -9,6 +9,7 @@
   var colorWheelIndividualSpikesAngleChange = 360/totalColorWheelSteps;
   //Higher numbers add a higher color range:=, and vice versa.
   var rangeOfColorsMultiplier = 3; //"Color Range" input
+  var currentlySelectedAlgorithm;
 
   //Form 'algorithm informaiton' text 
   var information = {
@@ -301,7 +302,21 @@
   console.log(g360a);
   sortingCall.insert(g360a);
   //Change this based on selected algorithm, also, update information. Switch?
-  sortingCall.bubbleSort(); 
+  switch(currentlySelectedAlgorithm){
+    case 'BubbleSort':
+      sortingCall.bubbleSort(); 
+      break;
+    case 'InsertionSort':
+      sortingCall.insertionSort(); 
+      break;
+    case 'SelectionSort':
+      sortingCall.selectionSort(); 
+      break;
+    default:
+    console.error("Something went wrong with the algorithm seleciton!");
+
+  }
+  
   console.log(sortingCall.toSortedArray());
   console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
   console.log(`0:index changed,1:what that index is was,2: what that index is changed too. etc`);
@@ -358,7 +373,7 @@
         console.log(`${information[radios[i].value]}`);
         console.log(infoparagraph);
         infoparagraph.innerHTML = information[`${radios[i].value}`];
-
+        currentlySelectedAlgorithm = `${radios[i].value}`;
         // only one radio can be logically checked, don't check the rest
         break;
       }
