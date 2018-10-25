@@ -9,7 +9,7 @@
   var colorWheelIndividualSpikesAngleChange = 360/totalColorWheelSteps;
   //Higher numbers add a higher color range:=, and vice versa.
   var rangeOfColorsMultiplier = 3; //"Color Range" input
-  var currentlySelectedAlgorithm;
+  var currentlySelectedAlgorithm = "BubbleSort"; // 
 
   //Form 'algorithm informaiton' text 
   var information = {
