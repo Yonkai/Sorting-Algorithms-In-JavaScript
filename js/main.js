@@ -1,14 +1,14 @@
 (function () {
   //This IIFE contains the four sorting algorithms: Bubble Sort, Selection Sort, Insertion Sort, Merge Sort.
   //All are modified from another source. MasterSortingFunction is an ES5 constructor.
-  var colorWheelSizeInitial = 101;
-  var multiplierForColorWheelSize = 1; 
+  var colorWheelSizeInitial = 100; //"No. Spikes" input
+  var multiplierForColorWheelSize = 1;
   var initSpeedValueOfAnimationMilliseconds = 100;
   var totalColorWheelSteps = multiplierForColorWheelSize * colorWheelSizeInitial;
   //Makes it so there is a always a full circle no matter what the size of the wheel.
   var colorWheelIndividualSpikesAngleChange = 360/totalColorWheelSteps;
   //Higher numbers add a higher color range:=, and vice versa.
-  var rangeOfColorsMultiplier = 3;
+  var rangeOfColorsMultiplier = 3; //"Color Range" input
 
   //Form 'algorithm informaiton' text 
   var information = {
@@ -302,14 +302,18 @@
   //speed delay input, handled immediately
   var speedDelayElement = document.getElementById('speedDelay');
   speedDelayElement.onchange = function () {
-    var r = document.getElementById('speedDelay').value;
-    console.log(r + "ms: New speed delay.");
+    var milliseconds = document.getElementById('speedDelay').value;
+    console.log(milliseconds + "ms: New speed delay.");
     clearInterval(animation);
-    animation = setInterval(displaySortingAnimation, r);
+    animation = setInterval(displaySortingAnimation, milliseconds);
   };
   
   //spike count input
-
+  var speedDelayElement = document.getElementById('spikeCount');
+  speedDelayElement.onchange = function () {
+    var spikes = document.getElementById('spikeCount').value;
+    
+  };
   //color range input
 
   //information change, handled immediately
