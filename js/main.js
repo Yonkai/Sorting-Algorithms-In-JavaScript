@@ -272,6 +272,24 @@
 
   //Reset based on inputed info, should handle selected algorithm, spikes, and color range
   function resetPage() {
+    //remove
+    var myNode = document.getElementById("colorwheel");
+    while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+    }
+   //recreate
+    for (var i = 0; i < totalColorWheelSteps; i++) {
+      var color = document.createElement("span"); //rescope for the for use in reset function
+      color.setAttribute("id", "d" + i); 
+      color.style.backgroundColor = "hsl(" + (g360a[i]*rangeOfColorsMultiplier) + ", 100%, 50%)"; //only need to change this part for proper reset.
+      color.style.msTransform = "rotate(" + i*(colorWheelIndividualSpikesAngleChange) + "deg)";//spikes divided by 360?
+      color.style.webkitTransform = "rotate("+ i*(colorWheelIndividualSpikesAngleChange) + "deg)";
+      color.style.MozTransform = "rotate(" +i*(colorWheelIndividualSpikesAngleChange) + "deg)";
+      color.style.OTransform = "rotate(" + i*(colorWheelIndividualSpikesAngleChange) + "deg)";
+      color.style.transform = "rotate(" + i*(colorWheelIndividualSpikesAngleChange) + "deg)";
+      document.getElementById('colorwheel').appendChild(color);
+    };
+   //reset colors
     for (var i = 0; i < totalColorWheelSteps; i++) {
       document.getElementById("d" + i).style.backgroundColor = "hsl(" + g360a[i]*rangeOfColorsMultiplier + ", 100%, 50%)";
 
@@ -282,7 +300,7 @@
   shuffle(g360a);
   console.log(g360a);
   sortingCall.insert(g360a);
-  //Change this based on selected algorithm, also, update information. 
+  //Change this based on selected algorithm, also, update information. Switch?
   sortingCall.bubbleSort(); 
   console.log(sortingCall.toSortedArray());
   console.log(`Reading instructions for state list for bubble sort; follows this pattern:`);
@@ -302,19 +320,29 @@
   //speed delay input, handled immediately
   var speedDelayElement = document.getElementById('speedDelay');
   speedDelayElement.onchange = function () {
-    var milliseconds = document.getElementById('speedDelay').value;
+    let milliseconds = document.getElementById('speedDelay').value;
     console.log(milliseconds + "ms: New speed delay.");
     clearInterval(animation);
     animation = setInterval(displaySortingAnimation, milliseconds);
   };
   
   //spike count input
-  var speedDelayElement = document.getElementById('spikeCount');
-  speedDelayElement.onchange = function () {
-    var spikes = document.getElementById('spikeCount').value;
+  var spikeCountElement = document.getElementById('spikeCount');
+  spikeCountElement.onchange = function () {
+    let spikes = document.getElementById('spikeCount').value;
+    console.log(spikes);
+    totalColorWheelSteps = spikes;
+    colorWheelIndividualSpikesAngleChange = 360/totalColorWheelSteps;
+    
     
   };
   //color range input
+  var colorRangeElement = document.getElementById('colorRange');
+  colorRangeElement.onchange = function () {
+    let colorrange = document.getElementById('colorRange').value;
+    console.log(colorrange);
+    rangeOfColorsMultiplier = colorrange;
+  }
 
   //information change, handled immediately
   var radios = document.getElementsByName('algoselections');
