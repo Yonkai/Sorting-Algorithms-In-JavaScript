@@ -249,15 +249,11 @@
   };
 
   var cTemp = -1;
-  var displaySortingAnimationFlag = false;
-  displaySortingAnimation = function () {
-    if(displaySortingAnimationFlag){
 
-    }else{
+  displaySortingAnimation = function () {
     //based on (or for) instructions in console for BUBBLE SORT, INSERTION SORT, AND SELECTION SORT:
     document.getElementById("d" + stateList.get(cTemp += 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 1)*rangeOfColorsMultiplier + ", 100%, 50%)";
     document.getElementById("d" + stateList.get(cTemp -= 1)).style.backgroundColor = "hsl(" + stateList.get(cTemp += 2)*rangeOfColorsMultiplier + ", 100%, 50%)";
-    }
   };
 
   var animation = setInterval(displaySortingAnimation, initSpeedValueOfAnimationMilliseconds);
@@ -323,8 +319,7 @@
   console.log(sortingCall.showStateList());
   stateList = sortingCall.showStateList();
   cTemp = -1;
-
-  }
+}
 
   
   function changeEventHandler(event) {
