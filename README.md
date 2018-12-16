@@ -2,11 +2,8 @@
 The purpose of this website is to demonstrate visually how certain sorting algorithm's work and to allow control over specific parameters, and as to function as a personal learning project on Big-O notation and efficiency. 
 
 ## Built With
-* [HTML5boilerplate](https://html5boilerplate.com/). 
+* [HTML5boilerplate](https://html5boilerplate.com/)
 * JavaScript
-
-## Live link
-https://yonkai.github.io/Sorting-Algorithms-In-JavaScript/
 
 ## Use
 The controls menu can be found on the left side of the viewport.
@@ -18,6 +15,9 @@ The controls menu can be found on the left side of the viewport.
 5. Generate visual demonstration, represented as a color wheel.
 
 Steps 2 and 4 are activated immediately, steps 1 and 4 occur upon generating a new wheel.
+
+## Live link
+https://yonkai.github.io/Sorting-Algorithms-In-JavaScript/
 
 ## Author
 * Frank Gunsch
