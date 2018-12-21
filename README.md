@@ -3,7 +3,8 @@ The purpose of this website is to demonstrate visually how certain sorting algor
 
 ## Built With
 * [HTML5boilerplate](https://html5boilerplate.com/)
-* JavaScript
+* [Slideout.js](https://github.com/mango/slideout)
+* Vanilla JavaScript
 
 ## Use
 The controls menu can be found on the left side of the viewport.
