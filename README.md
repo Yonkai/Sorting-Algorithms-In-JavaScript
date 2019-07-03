@@ -18,7 +18,7 @@ The controls menu can be found on the left side of the viewport.
 Steps 2 and 4 are activated immediately, steps 1 and 4 occur upon generating a new wheel.
 
 ## Live link
-https://yonkai.github.io/Sorting-Algorithms-In-JavaScript/
+https://yonkai.github.io/visualized-sorting-algorithms-in-javascript/
 
 ## Author
 * Frank Gunsch
